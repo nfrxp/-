@@ -38,56 +38,86 @@
 //	return 0;
 //}
 
-//#include <iostream>
+//#include <iostream>								//已知年月求该月有多少天
 //using namespace std;
 //int main()
 //{
-//	int day = 0;
-//	cout << "请输入0~6的数字" << endl;
-//	cin >> day;
-//	switch (day)
+//	int y,m;
+//	cout << "请依次输入年份以及月份" << endl;
+//	cin >> y;
+//	cin >> m;
+//	if ((y % 4 == 0 && y % 100 != 0) || (y % 400 == 0))
 //	{
-//	case 1:
-//	case 3:
-//	case 5:
-//	case 7:
-//	case 9:
-//	case 11:
-//		cout << "31天" << endl;
-//		break;
-//	case 4:
-//	case 6:
-//	case 8:
-//	case 10:
-//	case 12:
-//		cout << "30天" << endl;
-//		break;
-//	case 2:
-//		cout << "29天" << endl;
-//		break;
-// default:
-//cout << "一年只有12个月，giegie~" << endl;
+//		switch (m)
+//		{
+//		case 1:
+//		case 3:
+//		case 5:
+//		case 7:
+//		case 9:
+//		case 11:
+//			cout << "该月有31天" << endl;
+//			break;
+//		case 4:
+//		case 6:
+//		case 8:
+//		case 10:
+//		case 12:
+//			cout << "该月有30天" << endl;
+//			break;
+//		case 2:
+//			cout << "该月有29天" << endl;
+//			break;
+//		default:
+//			cout << "一年只有12个月，gie~gie~" << endl;
+//		}
+//
+//
 //	}
+//	else
+//		switch (m)
+//		{
+//		case 1:
+//		case 3:
+//		case 5:
+//		case 7:
+//		case 9:
+//		case 11:
+//			cout << "该月有31天" << endl;
+//			break;
+//		case 4:
+//		case 6:
+//		case 8:
+//		case 10:
+//		case 12:
+//			cout << "该月有30天" << endl;
+//			break;
+//		case 2:
+//			cout << "该月有29天" << endl;
+//			break;
+//		default:
+//			cout << "一年只有12个月，gie~gie~" << endl;
+//		}
 //	return 0;
 //}
 
 
-#include <iostream>//自定义函数(不对)
-using namespace std;
-int isleapyear(int year)
-{
-	if ((year % 4 == 0 && year % 100 != 0) || (year %400 == 0))
-		cout << year<<"是闰年" << endl;
-	return 0;
-}
-int main()
-{
-	int a;
-	cout << "Enter the year" << endl;
-	cin >> a;
-	if (isleapyear!=0)
-		cout <<a<<"是闰年" << endl;
-
-	return 0;
-}
+//#include <iostream>//自定义函数(不对)
+//using namespace std;
+//int isleapyear(int year)
+//{
+//	if ((year % 4 == 0 && year % 100 != 0) || (year %400 == 0))
+//		cout << year<<"是闰年" << endl;
+//	return 0;
+//}
+//int main()
+//{
+//	int a;
+//	cout << "Enter the year" << endl;
+//	cin >> a;
+//	if (isleapyear!=0)
+//		cout <<a<<"是闰年" << endl;
+//
+//	return 0;
+//}
 
