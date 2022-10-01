@@ -199,22 +199,175 @@
 //}
 
 
-#include<iostream>							//do while 猜数游戏 
+//#include<iostream>							//do while 猜数游戏 
+//using namespace std;
+//int main()
+//{
+//	int m(66), n(0);
+//	do
+//	{
+//		cout << "猜猜这个数是多少?(0~100)\n";
+//		cin >> n;
+//		if (n < m)
+//			cout << "你猜的值偏小!\n";
+//		else if (n > m)
+//			cout << "你猜的值偏大！\n";
+//		else
+//			cout << "恭喜你，你猜对啦！\n";
+//
+//	} while (n != m);
+//	return 0;
+//
+
+
+
+//#include <iostream>								//从5个球里取三个球 方法一
+//using namespace std;
+//int main()
+//{
+//
+//	int i,j,k;					//a,b,c分别代表取的三个球
+//	int b = 0;					//b代表情况的种数
+//	for (i = 0; i <= 4; i++)	//0到4分别对应红到黑五种颜色
+//	{
+//		for (j = 0; j <= 4; j++)
+//		{
+//			if (i == j)
+//				continue;
+//			else
+//				for (k =0; k <= 4; k++)
+//				{
+//					if (k == i || k == j)
+//						continue;
+//					else
+//					{
+//						b++;
+//						cout << b << "  ";
+//						switch (i)
+//						{
+//						case 0:
+//							cout << "	red" ;
+//							break;
+//						case 1:
+//							cout << "	yellow" ;
+//							break;
+//						case 2:
+//							cout << "	blue" ;
+//							break;
+//						case 3:
+//							cout << "	white" ;
+//							break;
+//						case 4:
+//							cout <<	"	black";
+//							break;
+//						}
+//
+//						switch (j)
+//						{
+//						case 0:
+//							cout << "	red";
+//							break;
+//						case 1:
+//							cout << "	yellow";
+//							break;
+//						case 2:
+//							cout << "	blue";
+//							break;
+//						case 3:
+//							cout << "	white";
+//							break;
+//						case 4:
+//							cout << "	black";
+//							break;
+//						}
+//
+//						switch (k)
+//						{
+//						case 0:
+//							cout << "	red"<<endl;
+//							break;
+//						case 1:
+//							cout << "	yellow" << endl;
+//							break;
+//						case 2:
+//							cout << "	blue" << endl;
+//							break;
+//						case 3:
+//							cout << "	white" << endl;
+//							break;
+//						case 4:
+//							cout << "	black" << endl;
+//							break;
+//						}
+//						
+//
+//					}
+//				}
+//		}
+//	}
+//	
+//
+//	return 0;
+//}
+
+#include<iostream>								//从5个球里取三个球 方法二（用for循环把三个switch合并为一个）
 using namespace std;
 int main()
 {
-	int m(66), n(0);
-	do
+	
+	int i, j, k;
+	int m(0);
+	int b(0), loop;
+	for (i = 0; i <= 4; i++)
 	{
-		cout << "猜猜这个数是多少?(0~100)\n";
-		cin >> n;
-		if (n < m)
-			cout << "你猜的值偏小!\n";
-		else if (n > m)
-			cout << "你猜的值偏大！\n";
-		else
-			cout << "恭喜你，你猜对啦！\n";
+		for(j=0;j<=4;j++)
+			if (j != i)
+			{
+				for (k = 0; k <= 4; k++)
+				{
+					if ((k != i )&& (k != j))
+					{
+						m++;
+						cout << m;
+						for (loop = 1; loop <= 3; loop++)
+						{
+							switch (loop)
+							{
+							case 1:
+								b = i;
+								break;
+							case 2:
+								b = j;
+								break;
+							case 3:
+								b = k;
+								break;
+							}
 
-	} while (n != m);
+							switch (b)
+							{
+							case 0:
+								cout << "	red";
+								break;
+							case 1:
+								cout << "	yellow";
+								break;
+							case 2:
+								cout << "	blue";
+								break;
+							case 3:
+								cout << "	white";
+								break;
+							case 4:
+								cout << "	black";
+								break;
+							}
+
+						}
+						cout << endl;
+					}
+				}
+			}
+	}
 	return 0;
 }
