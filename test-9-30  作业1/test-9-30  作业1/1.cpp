@@ -36,14 +36,14 @@
 //	cout << "你考试考了多少分？（0~100）" << endl;
 //	cin >> grade;
 //	if(grade<0||grade>100)
-//		cout<<"成绩在0到100之间\n";
-//	else if (grade >= 90 & grade <= 100)
+//		cout<<"成绩需在0到100之间\n";
+//	else if (grade >= 90 && grade <= 100)
 //		cout << "优\n";
-//	else if (grade >= 80 & grade <90)
+//	else if (grade >= 80 && grade <90)
 //		cout << "良\n";
-//	else if (grade >= 60 & grade <80)
+//	else if (grade >= 60 && grade <80)
 //		cout << "中\n"; 
-//	else if (grade >= 0 & grade <60)
+//	else if (grade >= 0 && grade <60)
 //		cout << "差\n";
 //	return 0;
 //}
@@ -84,60 +84,54 @@
 //		return 0;
 //}
 
-//#include<iostream>					//while 求1到100的质数
+#include<iostream>					//while 求1到100的质数
+using namespace std;
+int main()
+{
+	int i = 2, a, b;		//a用于求余，b为余
+	while (i <= 100)
+	{
+		a = 2;
+		while (a <i)
+		{
+			b = i % a;
+			if (b == 0)
+			{
+				break;
+			}
+			a++;
+		}
+		if (a == i)
+		{
+			cout << i << "是质数\n";
+		}
+
+		i++;
+
+	}
+	return 0;
+}
+
+
+//#include<iostream>					//do-while 求1到100的质数
 //using namespace std;
 //int main()
 //{
-//	int i = 2, a, b,c;		//a用于求余，b为余，c用于条件判断
-//	while (i <= 100)
-//	{
-//		a = 2;
-//		c = 1;
-//		while (a <i)
-//		{
-//			b = i % a;
-//			if (b == 0)
-//			{
-//				c = 0;
-//				break;
-//			}
-//			a++;
-//		}
-//		if (a == i)
-//		{
-//			if (c)
-//			cout << i << "是质数\n";
-//		}
-//
-//		i++;
-//
-//	}
-//	return 0;
-//}
-
-
-//#include<iostream>					//do while 求1到100的质数
-//using namespace std;
-//int main()
-//{
-//	int i=2, a, b, c;		//a用于求余，b为余，c用于条件判断
+//	int i=2, a, b;		//a用于求余，b为余
 //	do
 //	{
 //		a = 2;
-//		c = 1;
 //		do
 //		{
 //			b = i % a;
 //			if (b == 0)
 //			{
-//				c = 0;
 //				break;
 //			}
 //			a++;
 //		} while (a < i);
 //		if (a == i)
 //		{
-//				if (c)
 //					cout << i << "是质数\n";
 //		}
 //		i++;
@@ -152,24 +146,21 @@
 //using namespace std;
 //int main()
 //{
-//	int i = 2, a, b, c;		//a用于求余，b为余，c用于条件判断
+//	int i = 2, a, b;		//a用于求余，b为余
 //	for (i=2;i<=100;i++)
 //	{
 //		a = 2;
-//		c = 1;
 //		for (a =2;a< i;a++)
 //		{
 //			b = i % a;
 //			if (b == 0)
 //			{
-//				c = 0;
 //				break;
 //			}
 //
 //		}
 //		if (a == i)
 //		{
-//			if (c)
 //				cout << i << "是质数\n";
 //		}
 //	}
@@ -217,7 +208,7 @@
 //
 //	} while (n != m);
 //	return 0;
-//
+//}
 
 
 
@@ -310,64 +301,64 @@
 //	return 0;
 //}
 
-#include<iostream>								//从5个球里取三个球 方法二（用for循环把三个switch合并为一个）
-using namespace std;
-int main()
-{
-	
-	int i, j, k;
-	int m(0);
-	int b(0), loop;
-	for (i = 0; i <= 4; i++)
-	{
-		for(j=0;j<=4;j++)
-			if (j != i)
-			{
-				for (k = 0; k <= 4; k++)
-				{
-					if ((k != i )&& (k != j))
-					{
-						m++;
-						cout << m;
-						for (loop = 1; loop <= 3; loop++)
-						{
-							switch (loop)
-							{
-							case 1:
-								b = i;
-								break;
-							case 2:
-								b = j;
-								break;
-							case 3:
-								b = k;
-								break;
-							}
-
-							switch (b)
-							{
-							case 0:
-								cout << "	red";
-								break;
-							case 1:
-								cout << "	yellow";
-								break;
-							case 2:
-								cout << "	blue";
-								break;
-							case 3:
-								cout << "	white";
-								break;
-							case 4:
-								cout << "	black";
-								break;
-							}
-
-						}
-						cout << endl;
-					}
-				}
-			}
-	}
-	return 0;
-}
+//#include<iostream>								//从5个球里取三个球 方法二（用for循环把三个switch合并为一个）
+//using namespace std;
+//int main()
+//{
+//	
+//	int i, j, k;
+//	int m(0);
+//	int b(0), loop;
+//	for (i = 0; i <= 4; i++)
+//	{
+//		for(j=0;j<=4;j++)
+//			if (j != i)
+//			{
+//				for (k = 0; k <= 4; k++)
+//				{
+//					if ((k != i )&& (k != j))
+//					{
+//						m++;
+//						cout << m;
+//						for (loop = 1; loop <= 3; loop++)
+//						{
+//							switch (loop)
+//							{
+//							case 1:
+//								b = i;
+//								break;
+//							case 2:
+//								b = j;
+//								break;
+//							case 3:
+//								b = k;
+//								break;
+//							}
+//
+//							switch (b)
+//							{
+//							case 0:
+//								cout << "	red";
+//								break;
+//							case 1:
+//								cout << "	yellow";
+//								break;
+//							case 2:
+//								cout << "	blue";
+//								break;
+//							case 3:
+//								cout << "	white";
+//								break;
+//							case 4:
+//								cout << "	black";
+//								break;
+//							}
+//
+//						}
+//						cout << endl;
+//					}
+//				}
+//			}
+//	}
+//	return 0;
+//}
