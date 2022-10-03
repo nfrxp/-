@@ -53,30 +53,30 @@
 //	return 0;
 //}
 
-#include<stdio.h>
-#include<cmath>
-int main()
-{
-	int i, j;
-	int count(0);
-	for (i = 101; i <= 200; i+=2)		//筛选，偶数不可能为素数
-	{
-		for (j = 3; j <= sqrt(i); j+=2)	/*i=a*b, a和b中至少有一个数<=i的算术平方根*/
-		{
-			if (i % j == 0)
-			{
-				break;
-			}
-		}
-		if (j > sqrt(i))
-		{
-			count++;
-			printf("%d ", i);
-		}
-	}
-	printf("\n%d", count);
-	return 0;
-}
+//#include<stdio.h>
+//#include<cmath>
+//int main()
+//{
+//	int i, j;
+//	int count(0);
+//	for (i = 101; i <= 200; i+=2)		//筛选，除了2，其余偶数不可能为素数
+//	{
+//		for (j = 3; j <= sqrt(i); j+=2)	/*i=a*b, a和b中至少有一个数<=i的算术平方根*/
+//		{
+//			if (i % j == 0)
+//			{
+//				break;
+//			}
+//		}
+//		if (j > sqrt(i))
+//		{
+//			count++;
+//			printf("%d ", i);
+//		}
+//	}
+//	printf("\n%d", count);
+//	return 0;
+//}
 
 
 
@@ -174,9 +174,10 @@ int main()
 //void game()
 //{
 //	int random_num=rand()%100+1;
+//	//生成随机数
 //	int input(0);
 //	while (1)									//while(1) scanf 实现循环输入
-//	{
+//	{	//猜数字
 //		printf("请输入您猜的数！\n");
 //		scanf_s("%d", &input);
 //		if (input < random_num)
@@ -199,8 +200,8 @@ int main()
 //int main()
 //{
 //	int input;
-//	srand((unsigned)time(NULL));
-//	do
+//	srand((unsigned)time(NULL));			//srand对应的整型为变化的  时间戳  空指针
+//	do										//当前计算机的时间-计算机的起始时间(1970.1.1 0:0:0)
 //	{
 //		menu();
 //		printf("请输入1 or 0\n");
