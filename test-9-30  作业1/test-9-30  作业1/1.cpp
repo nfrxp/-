@@ -84,33 +84,33 @@
 //		return 0;
 //}
 
-#include<iostream>					//while 求1到100的质数
-using namespace std;
-int main()
-{
-	int i = 2, a, b;		//a用于求余，b为余
-	while (i <= 100)
-	{
-		a = 2;
-		while (a <i)
-		{
-			b = i % a;
-			if (b == 0)
-			{
-				break;
-			}
-			a++;
-		}
-		if (a == i)
-		{
-			cout << i << "是质数\n";
-		}
-
-		i++;
-
-	}
-	return 0;
-}
+//#include<iostream>					//while 求1到100的质数
+//using namespace std;
+//int main()
+//{
+//	int i = 2, a, b;		//a用于求余，b为余
+//	while (i <= 100)
+//	{
+//		a = 2;
+//		while (a <i)
+//		{
+//			b = i % a;
+//			if (b == 0)
+//			{
+//				break;
+//			}
+//			a++;
+//		}
+//		if (a == i)
+//		{
+//			cout << i << "是质数\n";
+//		}
+//
+//		i++;
+//
+//	}
+//	return 0;
+//}
 
 
 //#include<iostream>					//do-while 求1到100的质数
@@ -307,19 +307,19 @@ int main()
 //{
 //	
 //	int i, j, k;
-//	int m(0);
+//	int m(0);//计数
 //	int b(0), loop;
 //	for (i = 0; i <= 4; i++)
 //	{
-//		for(j=0;j<=4;j++)
+//		for(j=i+1;j<=4;j++)
 //			if (j != i)
 //			{
-//				for (k = 0; k <= 4; k++)
+//				for (k = j+1; k <= 4; k++)
 //				{
 //					if ((k != i )&& (k != j))
 //					{
 //						m++;
-//						cout << m;
+//						cout << m<<".";
 //						for (loop = 1; loop <= 3; loop++)
 //						{
 //							switch (loop)
@@ -338,19 +338,19 @@ int main()
 //							switch (b)
 //							{
 //							case 0:
-//								cout << "	red";
+//								cout << "	red	";
 //								break;
 //							case 1:
-//								cout << "	yellow";
+//								cout << "	yellow	";
 //								break;
 //							case 2:
-//								cout << "	blue";
+//								cout << "	blue	";
 //								break;
 //							case 3:
-//								cout << "	white";
+//								cout << "	white	";
 //								break;
 //							case 4:
-//								cout << "	black";
+//								cout << "	black	";
 //								break;
 //							}
 //
@@ -362,3 +362,98 @@ int main()
 //	}
 //	return 0;
 //}
+
+
+
+//#include <iostream>								//一次取3个，不分顺序,枚举
+//using namespace std;
+//int main()
+//{
+//    enum color{red,yellow,blue,white,black};
+//    color color1;
+//    int i, j, k, loop;
+//    int count = 0; //计数
+//    for (i = red; i <= black; i++)
+//    {
+//        for (j = i+1; j <= black; j++)
+//        {
+//            for (k = j+1; k <= black; k++)
+//            {
+//                if (i != j && i != k && j != k)
+//                {
+//                    count++;
+//                    cout << count<<".";
+//                    for (loop = 1; loop <= 3; loop++)
+//                    {
+//                        switch (loop)
+//                        {
+//                        case 1:
+//                            color1 = color(i);
+//                            break;
+//                        case 2:
+//                            color1 = color(j);
+//                            break;
+//                        case 3:
+//                            color1 = color(k);
+//                            break;
+//                        default:
+//                            break;
+//                        }
+//                        switch (color1)
+//                        {
+//                        case red:
+//                            cout << "red    "
+//                                << "  ";
+//                            break;
+//                        case yellow:
+//                            cout << "yellow "
+//                                << "   ";
+//                            break;
+//                        case blue:
+//                            cout << "blue   "
+//                                << "  ";
+//                            break;
+//                        case white:
+//                            cout << "white  "
+//                                << "  ";
+//                            break;
+//                        case black:
+//                            cout << "black  "
+//                                << "  ";
+//                            break;
+//                        default:
+//                            break;
+//                        }
+//                    }
+//                    cout << endl;
+//                }
+//
+//            }
+//        }
+//    }
+//
+//    return 0;
+//}
+
+#include<iostream>
+#include <stdlib.h>
+using namespace std;
+void main()
+{
+	int i, j, k, n = 0;
+	char c[5][7] = { "red","yellow","blue","white","black" };
+	for (i = 0; i < 5; i++)
+		for (j = i + 1; j < 5; j++)
+			for (k = j + 1; k < 5; k++)
+			{
+				if (i != j && j != k && k != i)
+				{
+					n++;
+					cout << n << ".";
+					cout<<c[i]<<"  "<< c[j] <<"  "<< c[k] << endl;
+
+				}
+			}
+}
+
+
