@@ -141,37 +141,36 @@
 
 
 
-#include<stdio.h>								//自定义函数，有序数组，二分查找
-
-int binary_search( int arr2[], int a,int sz)
-{
-	int m(0);
-	int n = sz - 1;
-	int mid(0);
-	while (m <=n)
-	{
-		mid = (m + n) / 2;
-		if (arr2[mid] > arr2[a])
-			n = mid - 1;
-		else if (arr2[mid] < arr2[a])
-			m = mid + 1;
-		else
-
-			return	mid;
-	}
-	return -1;
-
-}
-
-int main()
-{
-	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
-	int k(5);
-	int sz=sizeof arr/sizeof arr[0];
-	int ret = binary_search(arr, k, sz);
-	if ( ret== -1)
-		printf("找不到欸！");
-	else
-		printf("找到了！下标为%d",ret);
-	return 0;
-}
+//#include<stdio.h>								//自定义函数，有序数组，二分查找
+//int binary_search( int arr2[], int a,int sz)
+//{
+//	int m(0);
+//	int n = sz - 1;
+//	int mid(0);
+//	while (m <=n)
+//	{
+//		mid = (m + n) / 2;
+//		if (arr2[mid] > arr2[a])
+//			n = mid - 1;
+//		else if (arr2[mid] < arr2[a])
+//			m = mid + 1;
+//		else
+//
+//			return	mid;
+//	}
+//	return -1;
+//
+//}
+//
+//int main()
+//{
+//	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int k(5);
+//	int sz=sizeof arr/sizeof arr[0];
+//	int ret = binary_search(arr, k, sz);
+//	if ( ret== -1)
+//		printf("找不到欸！");
+//	else
+//		printf("找到了！下标为%d",ret);
+//	return 0;
+//}
