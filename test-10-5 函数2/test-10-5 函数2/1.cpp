@@ -60,3 +60,45 @@
 //	printf("%d", a);
 //	return 0;
 //}
+
+
+////1 1 2 3 5 8 13 21 34 55……						描述第n个斐波那契数
+//
+//#define _CRT_SECURE_NO_WARNINGS 1
+//#include<stdio.h>
+//
+////int count;
+////int Fib(int n)
+////{
+////	if (n == 3)
+////		count++;
+////	if (n <= 2)										//递归，大量的重复计算，一分二，二分四
+////		return 1;
+////	else
+////		return Fib(n - 1) + Fib(n - 2);
+////}
+//
+//int Fib(int n)
+//{
+//	int a(1), b(1), c(1);
+//	while (n > 2)									//循环
+//	{
+//		c = a + b;
+//		a = b;
+//		b = c;
+//		n--;
+//	}
+//	return c;
+//}
+//
+//
+//int main()
+//{
+//	int n;
+//	int ret;
+//	scanf("%d", &n);
+//	ret = Fib(n);						//TDD-测试驱动开发
+//	printf("%d", ret);
+//
+//	return 0;
+//}
