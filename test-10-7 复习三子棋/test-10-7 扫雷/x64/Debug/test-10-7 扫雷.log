@@ -1,0 +1,2 @@
+﻿3.test 扫雷.obj : error LNK2019: 无法解析的外部符号 InitBoard，函数 game 中引用了该符号
+C:\Code\test-10-7 扫雷\x64\Debug\test-10-7 扫雷.exe : fatal error LNK1120: 1 个无法解析的外部命令
