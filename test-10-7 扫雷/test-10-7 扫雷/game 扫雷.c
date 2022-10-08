@@ -24,16 +24,37 @@ void DisplayBoard(char board[ROWS][COLS], int row, int col)
 	for (j = 0; j <= row; j++)
 	{
 		printf("%d ", j);
+		if (j < row)
+		{
+			printf("|");
+		}
 	}
 	printf("\n");
 	for (i = 1; i <= row; i++)
 	{
-		printf("%d ", i);
-		for (j = 1; j <= col; j++)
+
+		for (j = 1; j <= col+1; j++)			//分隔行
 		{
-			printf("%c ", board[i][j]);
+			
+			printf("--");
+			if (j <=row)
+			{
+				printf("|");
+			}
 		}
 		printf("\n");
+		printf("%d ", i);
+		printf("|");
+		for (j = 1; j <= col; j++)			//show各行
+		{
+			printf("%c ", board[i][j]);
+			if (j < row)
+			{
+				printf("|");
+			}
+		}
+		printf("\n");
+
 	}
 }
 
