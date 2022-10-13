@@ -465,7 +465,7 @@ int main()
 	cin >> N;
 	n = N;
 	cout << N << "=";
-	for (i = 2; i <= n / 2;)
+	for (i = 2; i <= sqrt(n);)
 	{
 		if (n % i==0)
 		{

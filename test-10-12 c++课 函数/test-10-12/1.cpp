@@ -165,56 +165,56 @@
 
 
 
-//#include<iostream>										//投骰子
-//using namespace std;
-//
-//int rollDice()
-//{
-//	int die1 = 1 + rand() % 6;
-//	int die2 = 1 + rand() % 6;
-//	int sum = die1 + die2;
-//	cout << "player rolled " << die1 << " + " << die2 << " = " << sum << endl;
-//	return sum;
-//}
-//
-//
-//int main()
-//{
-//	unsigned seed;
-//	cout << "Please enter an unsigned integer: ";
-//	cin >> seed;//输入随机数种子
-//	srand(seed);//将种子传递给rand()
-//
-//	int sum = 0;
-//	sum = rollDice();
-//	if (sum == 7 || sum == 11)
-//	{
-//		cout << "获胜！";
-//	}
-//	else if (sum == 2 || sum == 3 || sum == 12)
-//	{
-//		cout << "失败！";
-//	}
-//	else 
-//	{
-//		int standerd = sum;
-//		while (1)
-//		{
-//			sum = rollDice();
-//			if (sum == standerd)
-//			{
-//				cout << "获胜！";
-//				break;
-//			}
-//			else if(sum==7)
-//			{
-//				cout << "失败！";
-//				break;
-//			}
-//		}
-//	}
-//	return 0;
-//}
+#include<iostream>										//投骰子
+using namespace std;
+
+int rollDice()
+{
+	int die1 = 1 + rand() % 6;
+	int die2 = 1 + rand() % 6;
+	int sum = die1 + die2;
+	cout << "player rolled " << die1 << " + " << die2 << " = " << sum << endl;
+	return sum;
+}
+
+
+int main()
+{
+	unsigned seed;
+	cout << "Please enter an unsigned integer: ";
+	cin >> seed;//输入随机数种子
+	srand(seed);//将种子传递给rand()
+
+	int sum = 0;
+	sum = rollDice();
+	if (sum == 7 || sum == 11)
+	{
+		cout << "获胜！";
+	}
+	else if (sum == 2 || sum == 3 || sum == 12)
+	{
+		cout << "失败！";
+	}
+	else 
+	{
+		int standerd = sum;
+		while (1)
+		{
+			sum = rollDice();
+			if (sum == standerd)
+			{
+				cout << "获胜！";
+				break;
+			}
+			else if(sum==7)
+			{
+				cout << "失败！";
+				break;
+			}
+		}
+	}
+	return 0;
+}
 
 
 
@@ -368,20 +368,20 @@
 
 
 
-#include <iostream>
-using namespace std;
-
-const double PI = 3.14159265358979;
-inline double calArea(double radius)
-{
-	return PI * radius * radius;
-}
-
-int main() {
-	double r = 3.0;
-	double area = calArea(r);
-	cout << area << endl;
-	return 0;
-}
+//#include <iostream>										//内联函数，编译时在调用处用函数体替换
+//using namespace std;
+//
+//const double PI = 3.14159265358979;
+//inline double calArea(double radius)
+//{
+//	return PI * radius * radius;
+//}
+//
+//int main() {
+//	double r = 3.0;
+//	double area = calArea(r);
+//	cout << area << endl;
+//	return 0;
+//}
 
 
