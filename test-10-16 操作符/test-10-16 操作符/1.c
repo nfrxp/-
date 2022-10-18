@@ -201,7 +201,7 @@
 //	struct a* pi = &i;		//指针
 //
 //
-//	printf("%s\n", pi->name);		//结构体指针->成员名,访问结构体成员
+//	printf("%s\n", pi->name);		//结构体指针->成员名,指向操作符，访问结构体成员
 //	printf("%d\n\n", pi->age);
 //
 //	printf("%s\n", (*pi).name);		//解引用操作符，点操作符
@@ -225,30 +225,55 @@
 //	return 0;
 //}
 
-#include<stdio.h>
-int main()
-{
-	//int i = 0;
-	//i = 6 + '\x43' + 010 + 0 * 10;
-	//printf("%d\n", i);					//81
+//#include<stdio.h>
+//int main()
+//{
+//	//int i = 0;
+//	//i = 6 + '\x43' + 010 + 0 * 10;
+//	//printf("%d\n", i);					//81
+//
+//	//
+//	//int j = 6 + '\x43' + 010;
+//	//printf("%d\n", j);					//81
+//
+//	//int k = 6 + '\x43';
+//	//printf("%d\n", k);					//73
+//
+//	//int l = '\x43';
+//	//printf("%d\n", l);					//67
+//
+//	//int a = 010;
+//	//printf("%d", a);					//8
+//
+//	int i = 'a' + 10 + '\102' + 010 + 0x11;
+//	printf("%d\n", i);
+//
+//	int j = 0x11;
+//	printf("%d", j);
+//	return 0;
+//}
 
-	//
-	//int j = 6 + '\x43' + 010;
-	//printf("%d\n", j);					//81
 
-	//int k = 6 + '\x43';
-	//printf("%d\n", k);					//73
+//#include<stdio.h>					整型提升，不同情况，原反补
+//int main()
+//{
+//	char i = 128;
+//	printf("%d", i);
+//	return 0;
+//}
 
-	//int l = '\x43';
-	//printf("%d\n", l);					//67
+//#include<stdio.h>
+//int main()
+//{
+//	char a = 0xb6;
+//	short b = 0xb600;
+//	int c = 0xb600000;
+//	if (a == 0xb6)							//整型提升
+//		printf("a");
+//	if (b == 0xb600)						//整型提升
+//		printf("b");
+//	if (c == 0xb600000)
+//		printf("c");
+//	return 0;
+//}
 
-	//int a = 010;
-	//printf("%d", a);					//8
-
-	int i = 'a' + 10 + '\102' + 010 + 0x11;
-	printf("%d\n", i);
-
-	int j = 0x11;
-	printf("%d", j);
-	return 0;
-}
