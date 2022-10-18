@@ -1,2 +1,2 @@
 ﻿  1.c
-  test-10-17.vcxproj -> C:\Code\test-10-17\x64\Debug\test-10-17.exe
+C:\Code\test-10-17\test-10-17\1.c(131,10): error C2106: “=”: 左操作数必须为左值
