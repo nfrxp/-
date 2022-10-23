@@ -18,5 +18,20 @@
     <ClCompile Include="1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="运算符重载.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="其他作业.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <ClCompile Include="空.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+=======
+>>>>>>> 72044e2050ed641845a807c3e66ec54a61823515
+=======
+>>>>>>> 72044e2050ed641845a807c3e66ec54a61823515
   </ItemGroup>
 </Project>
