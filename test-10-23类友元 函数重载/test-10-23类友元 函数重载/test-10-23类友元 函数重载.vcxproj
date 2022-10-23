@@ -128,7 +128,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="1.cpp" />
+<<<<<<< HEAD:test-10-23类友元 函数重载/test-10-23类友元 函数重载/test-10-23类友元 函数重载.vcxproj
     <ClCompile Include="其他作业.cpp" />
+=======
+    <ClCompile Include="其他作业.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+>>>>>>> 72044e2050ed641845a807c3e66ec54a61823515:test-10-23 类 友元 运算符重载/test-10-23 类 友元 运算符重载/test-10-23 类 友元 运算符重载.vcxproj
     <ClCompile Include="运算符重载.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
