@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{19106183-8401-4827-8075-27a3c1eb06b3}</ProjectGuid>
-    <RootNamespace>test1023类友元运算符重载</RootNamespace>
+    <ProjectGuid>{c822ef8a-1267-4484-a87e-659f53b30d80}</ProjectGuid>
+    <RootNamespace>test1023类友元函数重载</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -128,16 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="1.cpp" />
-    <ClCompile Include="其他作业.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <ClCompile Include="空.cpp" />
-=======
->>>>>>> 72044e2050ed641845a807c3e66ec54a61823515
-=======
->>>>>>> 72044e2050ed641845a807c3e66ec54a61823515
+    <ClCompile Include="其他作业.cpp" />
     <ClCompile Include="运算符重载.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
