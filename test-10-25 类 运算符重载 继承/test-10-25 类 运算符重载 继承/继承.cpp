@@ -315,3 +315,119 @@
 //	test01();
 //	return 0;
 //}
+
+
+
+//#include<iostream>									//继承中	同名问题（成员、函数）
+//using namespace std;
+//
+//
+//class Base
+//{
+//public:
+//	int A=10;
+//	void fun()
+//	{
+//		cout << "Base 的函数调用\n";
+//	}
+//
+//	void fun(int a)
+//	{
+//		cout << "Base 的函数调用\n";
+//	}
+//};
+//
+//class Son:public Base
+//{
+//public:
+//	int A=20;
+//	void fun()
+//	{
+//		cout << "Son 的函数调用\n";
+//	}
+//};
+//
+//void test01()
+//{
+//	Son a;
+//	cout << a.A << endl;		//对象同名时，默认调用子类中的对象
+//	cout << a.Base::A << endl;
+//
+//	a.fun();
+//	a.Base::fun();
+//
+//	a.fun(10);		//子类与父类函数同名时，子类隐藏父类中的	所有	同名函数
+//	a.Base::fun(10);
+//}
+//int main()
+//{
+//	test01();
+//	return 0;
+//}
+
+//#include<iostream>										//继承中 同名静态成员问题
+//using namespace std;
+//
+//class Base
+//{
+//public:
+//	static int A;
+//	//静态成员：类内声明，类外定义
+//
+//	static void fun()
+//	{
+//		cout << "Base	中 静态函数的调用\n";
+//	}
+//	static void fun(int p)
+//	{
+//		cout << "Base	中 静态函数的调用\n";
+//	}
+//};
+//int Base::A = 10;
+//
+//
+//class Son:public Base
+//{
+//public:
+//	static int A ;
+//	static void fun()
+//	{
+//		cout << "Son	中 静态函数的调用\n";
+//	}
+//};
+//int Son::A = 20;
+//
+//void test01()	//同名静态成员
+//{
+//	//1.静态成员：通过对象访问
+//	cout << "通过对象访问静态对象\n";
+//	Son a;
+//	cout << a.A << endl;
+//	cout << a.Base::A << endl;
+//
+//	//2.静态成员：通过类名访问
+//	cout << "通过类名访问静态对象\n";
+//	cout << Son::A << endl;
+//	cout << Son::Base::A << endl;	//类名 作用域
+//}
+//
+//void test02()	//同名静态函数
+//{
+//	//1.静态函数调用：通过对象访问
+//	cout << "通过对象访问静态函数\n";
+//	Son a;
+//	a.fun();
+//	a.Base::fun();
+//
+//	//2.静态函数调用：通过类名访问
+//	cout << "通过类名访问静态函数\n";
+//	Son::fun();
+//	Son::Base::fun();
+//	//Son::fun(11);	//子类父类存在同名函数时，子类隐藏父类中的	所有	同名函数
+//}
+//int main()
+//{
+//	test01();
+//	test02();
+//	return 0;
+//}
