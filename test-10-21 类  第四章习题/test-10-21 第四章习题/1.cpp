@@ -94,6 +94,41 @@
 //}
 
 
+
+//#include<iostream>										//同上，矩形类，求面积
+//using namespace std;
+//
+//class Rectangle
+//{
+//public:
+//	Rectangle(float x1, float y1, float x2, float y2)
+//	{
+//		X1 = x1; 
+//		Y1 = y1; 
+//		X2 = x2; 
+//		Y2 = y2;
+//	}
+//	~Rectangle() {}
+//
+//	float ShowS()
+//	{
+//		return (X1 - X2) * (Y1 - Y2);
+//	}
+//private:
+//	float X1;
+//	float Y1;
+//	float X2;
+//	float Y2;
+//};
+//int main()
+//{
+//	Rectangle a(9.2, 9.4, 3.2, 3.4);
+//	cout << "面积为：" <<a.ShowS()<< endl;
+//	return 0;
+//}
+
+
+
 //#include<iostream>										//矩形类，利用长宽求面积
 //using namespace std;
 //
