@@ -379,63 +379,222 @@
 
 
 
-#include<iostream>									//堆区数据	虚析构和纯虚析构
+//#include<iostream>									//堆区数据	虚析构和纯虚析构
+//using namespace std;
+//
+//class Animal {
+//public:
+//	Animal()
+//	{
+//		cout << "Animal 构造函数调用\n";
+//	}
+//
+//	virtual void Speak() = 0;
+//
+//	//利用虚析构，解决父类指针释放子类对象不干净
+//	//virtual ~Animal() {
+//	//	cout << "Animal 虚构函数调用\n";
+//	//}
+//
+//	//纯虚析构函数必须实现
+//	//virtual ~Animal()  = 0;
+//	virtual ~Animal() = 0;
+//
+//};
+//Animal::~Animal()
+//{
+//	cout << "Animal 纯虚析构调用\n";
+//}
+//
+//class Cat:public Animal
+//{
+//public:
+//	Cat(string name)
+//	{
+//		cout << "Cat 构造函数调用\n";
+//		Name = new string(name);
+//	}
+//	void Speak()
+//	{
+//		cout <<*Name<< "小猫在说话\n";
+//	}
+//
+//	~Cat()
+//	{
+//		cout << "Cat 析构函数调用\n";
+//		if (Name != NULL)
+//		{
+//			delete Name;
+//			Name = NULL;
+//		}
+//	}
+//	string* Name;
+//};
+//
+//void test01()
+//{
+//	Animal* a = new Cat("Tom");
+//	a->Speak();
+//	delete a;
+//}
+//int main()
+//{
+//	test01();
+//	return 0;
+//}
+
+
+#include<iostream>										//多态 组装电脑
 using namespace std;
 
-class Animal {
+//抽象不同零件类
+class CPU
+{
 public:
-	Animal()
-	{
-		cout << "Animal 构造函数调用\n";
-	}
-
-	virtual void Speak() = 0;
-
-	//利用虚析构，解决父类指针释放子类对象不干净
-	//virtual ~Animal() {
-	//	cout << "Animal 虚构函数调用\n";
-	//}
-
-	//纯虚析构函数必须实现
-	//virtual ~Animal()  = 0;
-	virtual ~Animal() = 0;
-
+	virtual void Calculate() = 0;
 };
-Animal::~Animal()
-{
-	cout << "Animal 纯虚析构调用\n";
-}
 
-class Cat:public Animal
+class VideoCard
 {
 public:
-	Cat(string name)
+	virtual void Display() = 0;
+};
+
+class Memory
+{
+public:
+	virtual void Store() = 0;
+};
+
+//电脑类
+class Computer
+{
+public:
+	Computer(CPU* cpu, VideoCard* vc, Memory* store)
 	{
-		cout << "Cat 构造函数调用\n";
-		Name = new string(name);
-	}
-	void Speak()
-	{
-		cout <<*Name<< "小猫在说话\n";
+		m_cpu = cpu;
+		m_vc = vc;
+		m_store = store;
 	}
 
-	~Cat()
+	//工作函数
+	void work()
 	{
-		cout << "Cat 析构函数调用\n";
-		if (Name != NULL)
+		m_cpu->Calculate();
+		m_vc->Display();
+		m_store->Store();
+	}
+
+	//析构函数 释放三个电脑零件
+	~Computer()
+	{
+		//释放CPU
+		if (m_cpu != NULL)
 		{
-			delete Name;
-			Name = NULL;
+			delete m_cpu;
+			m_cpu = NULL;
+		}
+		//释放显卡
+		if (m_vc != NULL)
+		{
+			delete m_vc;
+			m_vc = NULL;
+		}
+		//释放内存条
+		if (m_store != NULL)
+		{
+			delete m_store;
+			m_store = NULL;
 		}
 	}
-	string* Name;
+private:
+	CPU* m_cpu;
+	VideoCard* m_vc;
+	Memory* m_store;
+};
+
+
+//不同厂商零件
+//Intel厂商
+//1.CPU
+class IntelCPU:public CPU
+{
+public:
+	void Calculate()
+	{
+		cout << "Intel的CPU开始工作了\n";
+	}
+};
+
+//2.显卡
+class IntelVC :public VideoCard
+{
+public:
+	void Display()
+	{
+		cout << "Intel的显卡开始工作了\n";
+	}
+};
+
+//3.内存条
+class IntelMemory :public Memory
+{
+public:
+	void Store()
+	{
+		cout << "Intel的内存条开始工作了\n";
+	}
+};
+
+//Lenovo厂商
+//1.CPU
+class LenovoCPU :public CPU
+{
+public:
+	virtual void Calculate()
+	{
+		cout << "Lenovo的CPU开始工作了\n";
+	}
+};
+
+//2.显卡
+class LenovoVideoCard :public VideoCard
+{
+public:
+	virtual void Display()
+	{
+		cout << "Lenovo的显卡开始工作了\n";
+	}
+};
+
+//3.内存条
+class LenovoMemory :public Memory
+{
+public:
+	virtual void Store()
+	{
+		cout << "Lenovo的内存条开始工作了\n";
+	}
 };
 
 void test01()
 {
-	Animal* a = new Cat("Tom");
-	a->Speak();
-	delete a;
+	////第一台电脑零件
+	//CPU* intelCPU = new IntelCPU;
+	//VideoCard* intelVideoCard = new VideoCard;
+	//Memory* intelMem = new IntelMemory;
+
+	cout << "第一台电脑开始工作\n";
+	//组装第一台电脑
+	Computer* computer1 = new Computer(new IntelCPU, new IntelVC, new IntelMemory);
+	computer1->work();
+	delete computer1;
+
+	cout << "------------------" << endl;
+	//组装第二台电脑
+	Computer* computer2 = new Computer(new LenovoCPU, new LenovoVideoCard, new LenovoMemory);
+	computer2->work();
+	delete computer2;
 }
 int main()
 {
