@@ -18,5 +18,8 @@
     <ClCompile Include="内存模型.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="第六章习题.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
