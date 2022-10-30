@@ -212,3 +212,69 @@
 //}
 
 
+//#include<iostream>									//字符串倒序输出
+//using namespace std;
+//
+////#include "stdafx.h"//vc++6.0加上这一行.
+//
+//void reverse(const char* const s) {
+//	if (*s) 
+//		reverse(s + 1);
+//	if (*s) 
+//		cout << *s;
+//}
+//void main(void) {
+//	char a[] = "123456789";
+//	reverse(a);
+//	cout << endl;
+//}
+
+
+
+
+//#include<iostream>                                //同上
+//
+//using namespace std;
+//
+//char* str = "Hello world";
+//char* ptr = str;
+//
+//int main()
+//{
+//    char* pt = ptr;
+//    if (*pt != '\0')
+//    {
+//        ++ptr;
+//        main();
+//        printf("%c", *pt);
+//    }
+//
+//    return 0;
+//
+//}
+
+#include<iostream>                      //倒序储存顺序再输出
+using namespace std;
+
+void reverse(char* s)
+{
+    if (*s)
+    {
+        char* p = s;
+        char c = s[0];
+        do 
+        { 
+            *p = *(p + 1); p++; 
+        } 
+        while (*p);
+        reverse(s);
+        s[strlen(s)] = c;
+    }
+}
+int main()
+{
+    char s[] = "abcde";
+    reverse(s);
+    printf("%s\n", s);
+    return 0;
+}
