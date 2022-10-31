@@ -264,7 +264,8 @@ void reverse(char* s)
         char c = s[0];
         do 
         { 
-            *p = *(p + 1); p++; 
+            *p = *(p + 1); 
+            p++; 
         } 
         while (*p);
         reverse(s);
@@ -273,7 +274,9 @@ void reverse(char* s)
 }
 int main()
 {
-    char s[] = "abcde";
+    char s[100];
+    cout << "ÇëÊäÈë×Ö·û´®:";
+    cin >> s;
     reverse(s);
     printf("%s\n", s);
     return 0;
