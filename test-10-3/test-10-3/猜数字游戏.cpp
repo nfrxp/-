@@ -160,67 +160,67 @@
 //}
 
 
-#include<stdio.h>										//猜数字游戏
-#include<stdlib.h>
-#include<time.h>
-
-void menu()
-{
-	printf("********************\n");
-	printf("*****  1.Play  *****\n");
-	printf("*****  0.Exit  *****\n");
-}
-
-void game()
-{
-	int random_num=rand()%100+1;
-	//生成随机数
-	int input(0);
-	while (1)									//while(1) scanf 实现循环输入
-	{	//猜数字
-		printf("请输入您猜的数！\n");
-		scanf_s("%d", &input);
-		if (input < random_num)
-		{
-			printf("您猜小了！");
-		}
-		else if (input > random_num)
-		{
-			printf("您猜大了！");
-		}
-		else
-		{
-			printf("恭喜您，您猜对了！\n");
-			break;
-		}
-	}
-
-}
-
-int main()
-{
-	int input;
-	srand((unsigned)time(NULL));			//srand对应的整型为变化的  时间戳  空指针
-	do										//当前计算机的时间-计算机的起始时间(1970.1.1 0:0:0)
-	{
-		menu();
-		printf("请输入1 or 0\n");
-		scanf_s("%d", &input);
-		switch (input)
-		{
-		case 1:
-			game();
-			break;
-		case 0:
-			break;
-		default:
-			printf("选择错误，请重新选择！\n");
-			break;
-		}
-	} while (input);
-
-	return 0;
-}
+//#include<stdio.h>										//猜数字游戏
+//#include<stdlib.h>
+//#include<time.h>
+//
+//void menu()
+//{
+//	printf("********************\n");
+//	printf("*****  1.Play  *****\n");
+//	printf("*****  0.Exit  *****\n");
+//}
+//
+//void game()
+//{
+//	int random_num=rand()%100+1;
+//	//生成随机数
+//	int input(0);
+//	while (1)									//while(1) scanf 实现循环输入
+//	{	//猜数字
+//		printf("请输入您猜的数！\n");
+//		scanf_s("%d", &input);
+//		if (input < random_num)
+//		{
+//			printf("您猜小了！");
+//		}
+//		else if (input > random_num)
+//		{
+//			printf("您猜大了！");
+//		}
+//		else
+//		{
+//			printf("恭喜您，您猜对了！\n");
+//			break;
+//		}
+//	}
+//
+//}
+//
+//int main()
+//{
+//	int input;
+//	srand((unsigned)time(NULL));			//srand对应的整型为变化的  时间戳  空指针
+//	do										//当前计算机的时间-计算机的起始时间(1970.1.1 0:0:0)
+//	{
+//		menu();
+//		printf("请输入1 or 0\n");
+//		scanf_s("%d", &input);
+//		switch (input)
+//		{
+//		case 1:
+//			game();
+//			break;
+//		case 0:
+//			break;
+//		default:
+//			printf("选择错误，请重新选择！\n");
+//			break;
+//		}
+//	} while (input);
+//
+//	return 0;
+//}
 
 //#define _CRT_SECURE_NO_WARNINGS 1						//关机 goto实现循环
 //#include<stdio.h>										//电脑cmd  服务
@@ -265,3 +265,29 @@ int main()
 //	}
 //	return 0;
 //}
+
+//#define _CRT_SECURE_NO_WARNINGS 1
+//#include<stdio.h>									//自定义乘法口诀表
+//
+//void func(int n)
+//{
+//	int i = 1, j = 1;
+//	for (i = 1; i <= n; i++)
+//	{
+//		for (j = 1; j <= i; j++)
+//		{
+//			printf("%d*%d=%2d  ", i, j, i * j);
+//		}
+//		printf("\n");
+//	}
+//}
+//
+//int main()
+//{
+//	int n = 0;
+//	printf("请输入行数列数:>");
+//	scanf("%d", &n);
+//	func(n);
+//	return 0;
+//}
+
