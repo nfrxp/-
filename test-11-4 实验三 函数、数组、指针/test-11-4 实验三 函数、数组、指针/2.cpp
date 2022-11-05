@@ -1,4 +1,4 @@
-//#include<iostream>											//1
+//#include<iostream>										//数组元素排序，二分查找
 //using namespace std;
 //int main()
 //{
@@ -57,7 +57,7 @@
 //}
 
 
-//#include<iostream>
+//#include<iostream>											//字符串大小写字母个数
 //using namespace std;
 //int main()
 //{
@@ -79,10 +79,127 @@
 //	return 0;
 //}
 
-#include<iostream>
-using namespace std;
-int main()
-{
+//#include<iostream>										//学生姓名排序
+//using namespace std;
+//
+//int main()
+//{
+//	char a[10][10] = { "John","Rose","Jack","Elen","Olivia","Mia","Benjamin","Mason","Logan","Noah" };
+//	int i = 0, j = 0;
+//	char* p[10], * t;
+//
+//	for (i = 0; i < 10; i++)
+//	{
+//		p[i] = a[i];
+//	}
+//	cout << "排序前：\n";
+//	for (i = 0; i < 10; i++)
+//	{
+//		cout << p[i] << " ";
+//	}
+//	cout << endl;
+//
+//	for (i = 0; i < 10; i++)
+//	{
+//		for (j = i + 1; j < 10; j++)
+//		{
+//			if (strcmp(p[i], p[j]) > 0)
+//			{
+//				t = p[i];
+//				p[i] = p[j];
+//				p[j] = t;
+//			}
+//		}
+//	}
+//
+//	cout<<"排序后：\n";
+//	for (i = 0; i < 10; i++)
+//	{
+//		cout << p[i] << " ";
+//	}
+//	cout << endl;
+//
+//	return 0;
+//}
 
-	return 0;
-}
+//#include<iostream>
+//using namespace std;
+//int main() 
+//{
+//	float a[10];
+//	cout << "请输入十个学生的成绩:\n";
+//	int i = 0;
+//	float sum = 0, average = 0;
+//	for (i = 0; i < 10; i++)
+//	{
+//		cin >> a[i];
+//	}
+//	for (i = 0; i < 10; i++)
+//	{
+//		sum += a[i];
+//	}
+//	average = sum / 10;
+//	cout << "平均成绩为：" << average << endl;
+//	cout << "高于平均成绩所对应的下标为：" ;
+//
+//	for (i = 0; i < 10; i++)
+//	{
+//		if (a[i] > average)
+//			cout << i << " ";
+//	}
+//	cout << endl;
+//	return 0;
+//}
+
+
+//#include<iostream>
+//using namespace std;
+//int main()
+//{
+//	float a[4][5];
+//	float b[4]={0};
+//	
+//	cout << "请输入20个数据：\n";
+//	int i = 0, j = 0;
+//	for (i = 0; i < 4; i++)
+//	{
+//		cout << "第" << i << "行"<<endl;
+//		for (j = 0; j < 5; j++)
+//		{
+//			cin >> a[i][j];
+//		}
+//	}
+//
+//	for (i = 0; i < 4; i++)
+//	{
+//		for (j = 0; j < 5; j++)
+//		{
+//			b[i] += a[i][j];
+//		}
+//	}
+//
+//	cout << "每行之和依次为：";
+//	for (i = 0; i < 4; i++)
+//	{
+//		cout<<b[i]<<" ";
+//	}
+//	return 0;
+//}
+
+
+//#include<iostream>										//ASCII码值个位数为3的字符个数
+//using namespace std;
+//int main()
+//{
+//	char a[20];
+//	cout << "请输入字符串:>";
+//	gets_s(a);
+//	int i = 0, count = 0;
+//	for (i = 0; i< 10; i++)
+//	{
+//		if ((int)a[i] % 10 == 3)
+//			count++;
+//	}
+//	cout << "\nASCII码值个位数为3的字符个数为:>" << count << endl;
+//	return 0;
+//}
