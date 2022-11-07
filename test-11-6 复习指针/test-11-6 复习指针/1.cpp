@@ -1,4 +1,37 @@
 
+//#include<iostream>									//指针数组，数组元素为指针	数组指针？
+//using namespace std;
+//int main()
+//{
+//	int a[] = { 1,2,3 };
+//	int b[] = { 3,4,5 };
+//	int c[] = { 5,6,7 };
+//	int* p[] = { a,b,c };
+//	int i = 0, j = 0;
+//	for (i = 0; i < 3; i++)
+//	{
+//		for (j = 0; j < 3; j++)
+//		{
+//			cout << p[i] << ' ';
+//			cout << endl;
+//
+//		}
+//	}
+//	for (i = 0; i < 3; i++)
+//	{
+//		for (j = 0; j < 3; j++)
+//		{
+//			cout << p[i][j] << ' ';
+//			cout << endl;
+//
+//		}
+//	}
+//	return 0;
+//}
+
+
+
+
 //#include<iostream>									//三种方式输出数组元素
 //using namespace std;
 //int main()
