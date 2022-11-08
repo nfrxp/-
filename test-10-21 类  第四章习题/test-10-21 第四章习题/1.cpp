@@ -194,8 +194,9 @@
 //		X = x;
 //		Y = 0;
 //	}
-//	void add(Complex c2)
-//	{
+//	//void add(Complex c2)						//注意：此处应是拷贝构造函数
+//	void add(const Complex &c2)
+// {
 //		X += c2.X;
 //		Y += c2.Y;
 //	}
