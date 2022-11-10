@@ -1,4 +1,4 @@
-#include"Point.h"
+#include"Public Point.h"
 class Rectangle :public Point 
 {
 public:

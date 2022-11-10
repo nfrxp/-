@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-#include"Rectangle.h"
+#include"Public Rectangle.h"
 int main()
 {
 	//定义矩形类对象

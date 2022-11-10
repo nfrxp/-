@@ -15,15 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="point.cpp">
+    <ClCompile Include="Public point.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Rectangle.h">
+    <ClCompile Include="Public Rectangle.h">
       <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Private Point.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Point.h">
+    <ClInclude Include="Public Point.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Private Rectangle.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
