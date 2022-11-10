@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Public point.cpp">
+    <ClCompile Include="Public Point.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Public Rectangle.h">
@@ -24,12 +24,18 @@
     <ClCompile Include="Private Point.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Protected Point.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Public Point.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Private Rectangle.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Protected  Rectangle.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
