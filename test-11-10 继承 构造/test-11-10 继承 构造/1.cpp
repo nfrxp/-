@@ -90,3 +90,20 @@
 //	Derived obj(1, 2, 3, 4);
 //	return 0;
 //}
+
+
+#include<stdio.h>					//Çón½×³Ë
+
+int func(int n)
+{
+	if (n == 1)
+		return 1;
+	else
+		return n * func(n - 1);
+}
+int main()
+{
+	int i = 3;
+	printf("%d", func(i));
+	return 0;
+}
