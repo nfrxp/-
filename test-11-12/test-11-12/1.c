@@ -144,3 +144,63 @@
 //	}
 //	return 0;
 //}
+
+
+//#include<stdio.h>					//数组逆置
+//
+//void init(int* a,int n)
+//{
+//	int i = 0;
+//	for (i = 0; i < n; i++)
+//	{
+//		*(a + i) = 0;
+//	}
+//}
+//void print(int* a, int n)
+//{
+//	int i = 0;
+//	for (i = 0; i < n; i++)
+//	{
+//		printf("%d ", *(a + i));
+//	}
+//}
+//int main()
+//{
+//	int a[10];
+//	init(a, 10);
+//	print(a, 10);
+//	return 0;
+//}
+
+
+#include<stdio.h>				//冒泡排序,由小到大
+int main()
+{
+	int a[10] = { 4,2,5,3,7,1,8,6,9,0 };
+	int i = 0, j = 0;
+	printf("排序前：");
+	for (i = 0; i < 10; i++)		//排序前
+	{
+		printf("%d ", a[i]);
+	}
+
+	for (i = 0; i < 10; i++)		//排序
+	{
+		for (j = 0; j < 10 - 1-i; j++)
+		{
+			if (a[j] > a[j + 1])
+			{
+				int temp = a[j];
+				a[j] = a[j + 1];
+				a[j + 1] = temp;
+			}
+		}
+	}
+
+	printf("\n排序后：");
+	for (i = 0; i < 10; i++)		//排序后
+	{
+		printf("%d ", a[i]);
+	}
+	return 0;
+}
