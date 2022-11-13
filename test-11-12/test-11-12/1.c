@@ -1,3 +1,25 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+int fib(int n)
+{
+	if (n == 0)
+		return 0;
+	else if (n == 1)
+		return 1;
+	else
+		return fib(n - 1) + fib(n - 2);
+}
+int main()
+{
+	int n;
+	scanf("%d", &n);
+	printf("%d",fib(n));
+	return 0;
+}
+
+
+
+
 //#define _CRT_SECURE_NO_WARNINGS 1
 //#include<stdio.h>		//µ›πÈÏ≥≤®ƒ«∆ı ˝¡–
 //
@@ -173,34 +195,34 @@
 //}
 
 
-#include<stdio.h>				//√∞≈›≈≈–Ú,”…–°µΩ¥Û
-int main()
-{
-	int a[10] = { 4,2,5,3,7,1,8,6,9,0 };
-	int i = 0, j = 0;
-	printf("≈≈–Ú«∞£∫");
-	for (i = 0; i < 10; i++)		//≈≈–Ú«∞
-	{
-		printf("%d ", a[i]);
-	}
-
-	for (i = 0; i < 10; i++)		//≈≈–Ú
-	{
-		for (j = 0; j < 10 - 1-i; j++)
-		{
-			if (a[j] > a[j + 1])
-			{
-				int temp = a[j];
-				a[j] = a[j + 1];
-				a[j + 1] = temp;
-			}
-		}
-	}
-
-	printf("\n≈≈–Ú∫Û£∫");
-	for (i = 0; i < 10; i++)		//≈≈–Ú∫Û
-	{
-		printf("%d ", a[i]);
-	}
-	return 0;
-}
+//#include<stdio.h>				//√∞≈›≈≈–Ú,”…–°µΩ¥Û
+//int main()
+//{
+//	int a[10] = { 4,2,5,3,7,1,8,6,9,0 };
+//	int i = 0, j = 0;
+//	printf("≈≈–Ú«∞£∫");
+//	for (i = 0; i < 10; i++)		//≈≈–Ú«∞
+//	{
+//		printf("%d ", a[i]);
+//	}
+//
+//	for (i = 0; i < 10; i++)		//≈≈–Ú
+//	{
+//		for (j = 0; j < 10 - 1-i; j++)
+//		{
+//			if (a[j] > a[j + 1])
+//			{
+//				int temp = a[j];
+//				a[j] = a[j + 1];
+//				a[j + 1] = temp;
+//			}
+//		}
+//	}
+//
+//	printf("\n≈≈–Ú∫Û£∫");
+//	for (i = 0; i < 10; i++)		//≈≈–Ú∫Û
+//	{
+//		printf("%d ", a[i]);
+//	}
+//	return 0;
+//}
