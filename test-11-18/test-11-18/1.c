@@ -6,7 +6,7 @@ int main()
 	{
 		for (j = 1; j <= i; j++)
 		{
-			printf("%d*%d=%d ", j, i, i * j);
+			printf("%d*%d=%2d ", j, i, i * j);
 		}
 		printf("\n");
 	}
