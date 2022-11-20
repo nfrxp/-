@@ -87,7 +87,7 @@ void Play(char board1[ROWS][COLS], char board2[ROWS][COLS], int rows, int cols)	
 	while (k<row * col - COUNT)
 	{
 
-		printf("请输入坐标:>");				//1.输入坐标，判断是否合法，是否重复输入
+		printf("请输入坐标:>");				//1输入坐标，判断是否合法，是否重复输入
 		scanf("%d,%d", &i, &j);
 		if ((i > 0 && i <= row) && (j > 0 && j <= col))
 		{
