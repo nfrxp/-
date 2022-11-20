@@ -1,7 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
-#include<stdio.h>
 #include"game.h"
-#include<time.h>
+
 
 void game()															//”Œœ∑“≥√Ê
 {

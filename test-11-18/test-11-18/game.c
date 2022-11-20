@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS 1
 #include"game.h"
 
 
@@ -99,6 +100,8 @@ void Play(char board1[ROWS][COLS], char board2[ROWS][COLS], int rows, int cols)	
 			if (board2[i][j] == '1')
 			{
 				printf("恭喜您，被炸死了！\n");
+				ShowBoard(board2, ROWS, COLS);			//打印棋盘
+
 				break;
 			}
 
@@ -112,9 +115,7 @@ void Play(char board1[ROWS][COLS], char board2[ROWS][COLS], int rows, int cols)	
 			}
 		}
 		else
-		{
 			printf("坐标非法，请重新输入！\n");
-		}
 	}
 
 	if (k == row * col - COUNT)

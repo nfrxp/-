@@ -6,7 +6,7 @@
 #define COUNT 80
 #include<stdio.h>
 #include<stdlib.h>
-
+#include<time.h>
 void IniBoard(char board[ROWS][COLS], int rows, int cols, char p);
 void Set(char board[ROWS][COLS], int rows, int cols);
 void ShowBoard(char board[ROWS][COLS], int rows, int cols);
