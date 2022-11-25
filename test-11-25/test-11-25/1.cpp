@@ -70,22 +70,38 @@ void test06()			//cin.putback()将字符拷贝到缓冲区原位置
 
 void test07()		//案例1，判断用户输入的是字符串还是数字
 {
-	//利用偷窥
-	char a = cin.peek();
-	if (a >= '0' && a <= '9')
-	{
-		int num;
-		//num = cin.get();
-		cin >> num;
-		cout << "输入的是数字：" << num << endl;
+	////利用偷窥
+	//char a = cin.peek();
+	//if (a >= '0' && a <= '9')
+	//{
+	//	int num;
+	//	//num = cin.get();
+	//	cin >> num;
+	//	cout << "输入的是数字：" << num << endl;
 
-	}
-	else
-	{
-		char p[20];
-		cin.getline(p, 20);
-		cout << "输入的是字符串：" << p << endl;
-	}
+	//}
+	//else
+	//{
+	//	char p[20];
+	//	cin.getline(p, 20);
+	//	cout << "输入的是字符串：" << p << endl;
+	//}
+
+	////cin.putback()
+	//char a = cin.get();
+	//cin.putback(a);
+	//if (a >= '0' && a <= '9')
+	//{
+	//	int num;
+	//	cin >> num;
+	//	cout << "输入的是数字：" << num << endl;
+	//}
+	//else
+	//{
+	//	char b[20];
+	//	cin.getline(b, 20);
+	//	cout << "输入的是字符串：" << b << endl;
+	//}
 }
 int main()
 {
@@ -101,6 +117,6 @@ int main()
 
 	//test06();
 
-	test07();
+	//test07();
 	return 0;
 }

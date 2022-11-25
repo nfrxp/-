@@ -110,8 +110,6 @@ void FirtPage()
 		}
 	} while (i);
 
-
-
 }
 int main()
 {
