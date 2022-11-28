@@ -38,16 +38,61 @@
 //	return 0;
 //}
 
-//11_5.cpp
-#include <fstream>
+////11_5.cpp
+//#include <fstream>
+//using namespace std;
+//struct Date {
+//	int mon, day, year;
+//};
+//int main() {
+//	Date dt = { 6, 10, 92 };
+//	ofstream file("date.dat", ios_base::binary);
+//	file.write(reinterpret_cast<char*>(&dt), sizeof(dt));
+//	file.close();
+//	return 0;
+//}
+
+//11_6.cpp
+/*函数模板toString可以把各种支持“<<“插入符的类型的对象转换为字符串。*/
+//#include <iostream>
+//#include <sstream>
+//#include <string>
+//using namespace std;
+//
+//template <class T>
+//inline string toString(const T& v) {
+//	ostringstream os;	//创建字符串输出流
+//	os << v;		//将变量v的值写入字符串流
+//	return os.str();	//返回输出流生成的字符串
+//}
+//
+//int main() {
+//	string str1 = toString(5);
+//	cout << str1 << endl;
+//	string str2 = toString(1.2);
+//	cout << str2 << endl;
+//	return 0;
+//}
+
+
+//#include<iostream>
+//#include<iomanip>
+//using namespace std;
+//int main() {
+//	char a;
+//	while ((a=cin.get()) != EOF) {
+//		cout << setw(3);
+//		cout.put(a) << endl;
+//	}
+//	return 0;
+//}
+
+#include<iostream>
+#include<string>
 using namespace std;
-struct Date {
-	int mon, day, year;
-};
 int main() {
-	Date dt = { 6, 10, 92 };
-	ofstream file("date.dat", ios_base::binary);
-	file.write(reinterpret_cast<char*>(&dt), sizeof(dt));
-	file.close();
+	string a;
+	getline(cin, a, 't');		//getline读取字符串，自定义终止字符
+	cout << a << endl;
 	return 0;
 }
