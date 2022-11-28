@@ -87,12 +87,62 @@
 //	return 0;
 //}
 
-#include<iostream>
-#include<string>
+//#include<iostream>
+//#include<string>
+//using namespace std;
+//int main() {
+//	string a;
+//	getline(cin, a, 't');		//getline读取字符串，自定义终止字符
+//	cout << a << endl;
+//	return 0;
+//}
+
+
+//#include <iostream>
+//using namespace std;
+//
+//void fun(int*, int&, int, int);
+//int main(void) {
+//        int a[10] = { 10, 8, 6, 4, 2, 1, 3, 5, 7, 9 };
+//    int c = 0, d = 0;
+//    fun(a, d, c, 10);
+//    cout << c << "," << d;
+//    return 0;
+//}
+//
+//void fun(int* p, int& s1, int s2, int n) {
+//    s1 = 0;
+//    s2 = 0;
+//    for (int i = 0; i < n; ++i) {
+//        if (i % 2) {
+//            s1 += p[i];
+//        }
+//        else {
+//            s2 += p[i];
+//            
+//        }
+//    }
+//}
+
+
+#include <iostream>
 using namespace std;
-int main() {
-	string a;
-	getline(cin, a, 't');		//getline读取字符串，自定义终止字符
-	cout << a << endl;
-	return 0;
+
+int main(void)
+{
+    //int i;
+    //char s[2][5] = { "ABCD","E"};
+    //for (i = 0; i < 2; i++) {
+    //    cout << s[i] + i;
+    //}
+    cout << "E" + 1 << endl;
+
+
+
+    int a, b, d = 25;
+    a = d / 8 % 9;
+    b = a && (-1);                            //为什么b等于1
+    cout << a << "," << b;
+
+    return 0;
 }
