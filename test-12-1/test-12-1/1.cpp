@@ -143,13 +143,21 @@ void display(student& a) {
 		<< "\n成绩4：" << a.scores[3]
 		<< endl;
 }
+void set(student& a) {
+	cin >> a.name >> a.ID >> a.scores[0] >> a.scores[1] >> a.scores[2] >> a.scores[3];
+}
 int main() {
-	int n = 0;
+	int n = 0,i;
 	cin >> n;
-	struct student* a= new student[n];
+	struct student* a= new student [n];		//?????
+	for (i = 0; i < n; i++) {
+		set(*(a + i));
+	}
+	for (i = 0; i < n; i++) {
+		display(*a);
+	}
 
-	*a = { "小明",202221217219,40,40,40,40 };
-	*(a + 1) = { "小红",202221217219,40,40,40,40 };
-	display(*(a + 1));
+	//*a = { "小明",202221217219,40,40,40,40 };
+	//*(a + 1) = { "小红",202221217219,40,40,40,40 };
 	return 0;
 }
