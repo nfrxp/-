@@ -122,7 +122,7 @@ int main() {
 	}
 
 	ofstream ofs;
-	ofs.open("./7218.bat", ios::out);
+	ofs.open("./7218.txt", ios::out);
 	if (!ofs.is_open()) {
 		cout << "文件打开失败！\n";
 		exit;
