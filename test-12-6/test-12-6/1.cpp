@@ -4,12 +4,12 @@ using namespace std;
 typedef char BYTEPORT;
 
 void Delay1s(int n);
-void printBinary(BYTEPORT a);
+void Binary(BYTEPORT a);
 
 int main(void)
 {
     int T1, T2;
-    //右边6bit依次代表 东西红灯、东西绿灯、东西黄灯、南北红灯、南北绿灯、南北黄灯
+    //6bit依次代表 东西红灯、东西绿灯、东西黄灯、南北红灯、南北绿灯、南北黄灯
     //初始时，东向西为红灯，南向北为绿灯
     BYTEPORT a = 34;//00100010
     cout<<"请输入东西向红灯时间:\n";
@@ -22,19 +22,19 @@ int main(void)
     while (1)
     {
         a = 34;         //00100010
-        printBinary(a); //东西红灯,南北绿灯
-        Delay1s(T1);    //持续T1秒
+        Binary(a); //东西红灯,南北绿灯
+        Delay1s(T1-5);  //持续T1秒
 
         a = a ^ 3;      //00100001 
-        printBinary(a); //东西红灯，南北黄灯
+        Binary(a); //东西红灯，南北黄灯
         Delay1s(5);     //持续5秒
 
         a = a ^ 53;     //00010100 
-        printBinary(a); //东西绿灯，南北红灯
+        Binary(a); //东西绿灯，南北红灯
         Delay1s(T2);    //持续T2秒
 
         a = a ^ 24;     //00001100
-        printBinary(a); //东西黄灯，南北红灯
+        Binary(a); //东西黄灯，南北红灯
         Delay1s(5);     //持续5秒
 
     }
@@ -56,7 +56,7 @@ void Delay1s(int n)
     }
 }
 
-void printBinary(BYTEPORT a)
+void Binary(BYTEPORT a)
 {
     int t = a, num[8], i;
     int temp;
@@ -71,9 +71,24 @@ void printBinary(BYTEPORT a)
         num[i] = num[7 - i];
         num[7 - i] = temp;
     }
-    for (i = 0; i < 8; i++)
+    for (i = 2; i < 8; i++)
     {
         cout << num[i];
     }
-    cout << "\n";
+    switch (a) 
+    {
+    case 34:
+        cout << "东西向红灯，南北向绿灯\n";
+        break;
+    case 33:
+        cout << "东西向红灯，南北向黄灯\n";
+        break;
+    case 20:
+        cout << "东西向绿灯，南北向红灯\n";
+        break;
+    case 12:
+        cout << "东西向黄灯，南北向红灯\n";
+        break;
+    }
+    
 }
