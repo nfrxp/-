@@ -1,5 +1,6 @@
 #include<iostream>
 #include<conio.h>
+#include<string>
 using namespace std;
 void test01() {
 	char a;
@@ -27,12 +28,20 @@ void test02() {
 
 void test03() {
 	char a[90];
-	for (int i = 0; 1; i++) {
+	char b[90]; 
+	int i;
+	for (i = 0; 1; i++) {
 		
 		a[i] = _getch();
-		cout << a[i]; 
+		cout << a[i];
+		if(a[i]!='=')
+		ungetc(a[i],stdin);
+		b[i] = getchar();
 		if (a[i] == '=')
 			break;
+	}
+	for (i = 0; a[i] != '\0'; i++) {
+		cout << a[i];
 	}
 
 }
