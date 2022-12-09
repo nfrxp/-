@@ -322,57 +322,104 @@
 //}
 
 
-#include <iostream>
-using namespace std;
-class CBaseClass
-{
-public:
-	CBaseClass(int i, int j){
-		m_nX = i;
-		m_nY = j;
-	}
-	void MoveTo(int m_nXm, int m_nYm){
-		m_nX += m_nXm;
-		m_nY += m_nYm;
-		cout << "(" << m_nX << "," << m_nY << ")" << endl;
-	}
-	void ShowPos(){
-		cout << "(" << m_nX << "," << m_nY << ")" << endl;
-	}
-private:
-	int m_nX, m_nY;
-};
+//#include <iostream>
+//using namespace std;
+//class CBaseClass
+//{
+//public:
+//	CBaseClass(int i, int j){
+//		m_nX = i;
+//		m_nY = j;
+//	}
+//	void MoveTo(int m_nXm, int m_nYm){
+//		m_nX += m_nXm;
+//		m_nY += m_nYm;
+//		cout << "(" << m_nX << "," << m_nY << ")" << endl;
+//	}
+//	void ShowPos(){
+//		cout << "(" << m_nX << "," << m_nY << ")" << endl;
+//	}
+//private:
+//	int m_nX, m_nY;
+//};
+//
+//class CDerivedClass :public CBaseClass
+//{
+//public:
+//	CDerivedClass(int i, int j, int k, int l) :CBaseClass(i, j)
+//	{
+//		m_nXd = k;
+//		m_nYd = l;
+//	}
+//	void ShowPos()
+//	{
+//		cout << "(" << m_nXd << "," << m_nYd << ")" << endl;
+//	}
+//	void func1()
+//	{
+//		MoveTo(3, 5);
+//	}
+//	void func2()
+//	{
+//		CBaseClass::ShowPos();
+//	}
+//private:
+//	int m_nXd, m_nYd;
+//};
+//
+//void main()
+//{
+//	CBaseClass b(1, 2);
+//	b.ShowPos();
+//	CDerivedClass d(3, 4, 5, 6);
+//	d.func1();
+//	d.ShowPos();
+//	d.func2();
+//}
 
-class CDerivedClass :public CBaseClass
-{
-public:
-	CDerivedClass(int i, int j, int k, int l) :CBaseClass(i, j)
-	{
-		m_nXd = k;
-		m_nYd = l;
-	}
-	void ShowPos()
-	{
-		cout << "(" << m_nXd << "," << m_nYd << ")" << endl;
-	}
-	void func1()
-	{
-		MoveTo(3, 5);
-	}
-	void func2()
-	{
-		CBaseClass::ShowPos();
-	}
-private:
-	int m_nXd, m_nYd;
-};
+//#include <iostream>
+//using namespace std;
+//#include <iomanip>
+//void main()
+//{
+//	double pi = 3.1415927;
+//	int x = 12;
+//	cout.width(8);  //设置输出域的宽度为8位
+//	cout.setf(ios::oct | ios::showbase | ios::left);
+//	cout << x << endl;
+//	cout.width(12);
+//	cout << pi << endl;
+//	cout << resetiosflags(ios::left);  //清除左边对齐输出标志
+//	cout.width(8);
+//	cout.setf(ios::hex | ios::showbase | ios::right | ios::uppercase);
+//	cout << x << endl;
+//	cout.setf(ios::showpos | ios::scientific);
+//	cout << pi << endl;
+//}
 
-void main()
-{
-	CBaseClass b(1, 2);
-	b.ShowPos();
-	CDerivedClass d(3, 4, 5, 6);
-	d.func1();
-	d.ShowPos();
-	d.func2();
-}
+
+//#include <iostream>
+//using namespace std;
+//#include <string.h>
+////char* max(char* x, char* y)
+////{
+////	return (strcmp(x, y) > 0) ? x : y;
+////}
+//template <typename T>
+//T _max(T x, T y)
+//{
+//	return (x > y) ? x : y;
+//}
+//
+//void main()
+//{
+//	int m = 3, n = 7;
+//	double x = 1.25, y = -3.57;
+//	const char* st1 = "function", * st2 = "template";
+//	cout << "The maxium of m and n is: " << _max(m, n) << endl;
+//	cout << "The maxium of x and y is: " << _max(x, y) << endl;
+//	cout << "The maxium of m and y is: " << _max<int>(x, y) << endl;
+//	cout << "The maxium of st1 and st2 is: " << _max(st1, st2) << endl;
+//}
+//
+
