@@ -4,10 +4,10 @@ using namespace std;
 class CPerson
 {
 public:
-	CPerson(char *name, char gender, int year) 		
-	{
+	CPerson() 	{		cout << "调用CPerson构造函数！" << endl; }
+	void set(char* name, char gender, int year){
 		Name[20] = *name; Gender = gender; Year = year;
-		cout << "调用CPerson构造函数！" << endl; }
+	}
 	~CPerson() { cout << "调用CPerson析构函数！" << endl; }
 private:
 	char Name[20];
@@ -19,9 +19,11 @@ class CStuden:public CPerson
 {
 public:
 	CStuden(char *name, char gender, int year, long long studentID, float scores)
-		:CPerson(name,gender,year),StudentID(studentID),Scores(scores)
+		:CPerson(),StudentID(studentID),Scores(scores)
 	{
 		cout << "调用CStuden构造函数！" << endl;
+	}
+	void set(){
 	}
 	~CStuden() { cout << "调用CStuden析构函数！" << endl; }
 private:
