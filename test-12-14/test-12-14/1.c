@@ -115,13 +115,13 @@
 //	return 0;
 //}
 
-#include<stdio.h>			//断点
-int main()
-{
-	int i = 0;
-	for (i = 1; i < 10; i++) {
- 		i++;		//若断点在循环中，此时可能会多次运行到此断点。
-	}
-	printf("%d", i);
-	return 0;
-}
+//#include<stdio.h>			//断点
+//int main()
+//{
+//	int i = 0;
+//	for (i = 1; i < 10; i++) {
+// 		i++;		//若断点在循环中，此时可能会多次运行到此断点。
+//	}
+//	printf("%d", i);
+//	return 0;
+//}
