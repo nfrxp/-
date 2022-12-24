@@ -12,16 +12,16 @@ public:
     void main_menu();
 
     //计算 
-    int add(); //加减 
-    int mult(); //乘除 
-    int brackets(); //括号 
+    float add(); //加减 
+    float mult(); //乘除 
+    float brackets(); //括号 
     void match(char); //匹配下一个字符 
     void error(); //错误提示 
 };
 
 int main()
 {
-    int sum; //运算的结果
+    float sum; //运算的结果
     Cal c;
     c.main_menu();
     while (1)
@@ -54,9 +54,9 @@ void Cal::main_menu()
     cout << "**********************************************" << endl;
 }
 
-int Cal::add()
+float Cal::add()
 {
-    int temp = mult(); //先算乘除和括号 
+    float temp = mult(); //先算乘除和括号 
     while ((chr == '+') || (chr == '-'))
         if (chr == '+')
         {
@@ -71,10 +71,10 @@ int Cal::add()
     return temp;
 }
 
-int Cal::mult()
+float Cal::mult()
 {
-    int div;
-    int temp = brackets(); //先算括号 
+    float div;
+    float temp = brackets(); //先算括号 
     while ((chr == '*') || (chr == '/'))
     {
         if (chr == '*')
@@ -97,9 +97,9 @@ int Cal::mult()
     return temp;
 }
 
-int Cal::brackets()
+float Cal::brackets()
 {
-    int temp=0;
+    float temp=0;
     if (chr == '(')
     {
         match('(');
