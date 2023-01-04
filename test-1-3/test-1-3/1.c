@@ -66,9 +66,93 @@
 //	printf("%d", func(-1));
 //}
 
+//#include<stdio.h>
+//int main() {
+//	int a = 20;
+//	//a=0x00000014
+//	return 0;
+//}
+
+
+////判断当前机器的字节序
+//
+//#include<stdio.h>
+//
+//void test01() {
+//	int a = 1;
+//	//0x00 00 00 01
+//	//  高位    低位
+//	//取一个字节判断，取的是低地址处
+//	if (*(char*)&a)
+//		printf("小端");
+//	else
+//		printf("大端");
+//}
+//int main() {
+//	test01();
+//	return 0;
+//}
+
+//#include <stdio.h>
+//int main() {
+//	char a = -1;
+//	signed char b = -1;
+//	unsigned char c = -1;
+//	printf("a=%d,b=%d,c=%d", a, b, c);
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main() {
+//	char a = -128;
+//	printf("%u\n", a);
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main() {
+//	char a = 128;
+//	printf("%u\n", a);
+//	return 0;
+//}
+
+//#include<stdio.h>
+//
+//int main() {
+//	int i = -20;
+//	unsigned int j = 10;
+//	printf("%d\n", i + j);
+//	return 0;
+//}
+
+//#include<stdio.h>
+//
+//int main() {
+//	unsigned int i;
+//	for(i = 9; i >= 0; i--) {
+//		printf("%u\n", i);
+//	}
+//	return 0;
+//}
+
+//#include<stdio.h>
+//
+//int main() {
+//	char a[1000];
+//	int i;
+//	for (i = 0; i < 1000; i++) {
+//		a[i] = -1 - i;
+//	}
+//	printf("%d", strlen(a));
+//	return 0;
+//}
+
 #include<stdio.h>
+
+unsigned char i = 0;
 int main() {
-	int a = 20;
-	//a=0x00000014
+	for (i = 0; i <= 255; i++) {
+		printf("hello world\n");
+	}
 	return 0;
 }
