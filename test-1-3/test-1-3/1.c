@@ -41,15 +41,34 @@
 //	printf("%d\n",p[3][2]);
 //	return 0;
 //}
+//
+//#include<stdio.h>
+//
+//void test01() {
+//	int x;
+//	(x= 4 * 5, x * 5), x + 5;
+//	printf("%d",(x = 4 * 5, x * 5), x + 5);
+//}
+//
+//int func(int x)
+//{
+//	int count = 0;
+//	while (x)
+//	{
+//		count++;
+//		x = x & (x - 1);//ÓëÔËËã
+//	} return count;
+//}
+//int main() {
+//
+//	test01();
+//
+//	printf("%d", func(-1));
+//}
 
 #include<stdio.h>
-
-void test01() {
-	int x;
-	(x= 4 * 5, x * 5), x + 5;
-	printf("%d",(x = 4 * 5, x * 5), x + 5);
-}
 int main() {
-
-	test01();
+	int a = 20;
+	//a=0x00000014
+	return 0;
 }
