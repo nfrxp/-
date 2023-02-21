@@ -171,36 +171,36 @@
 //	cout << "The maxium of st1 and st2 is: " << maxt(st1, st2) << endl;
 //}
 
-#include<iostream>
-#include <fstream>
-using namespace std;
-int main(void)
-{
-	int a[] = { 1,2,3,4,5,6,7,8 };//2,3,6,5,10,7,14,9
-	int i;
-	ofstream out("array.dat");
-	if (!out)
-	{
-		cout << "File can't write\n";
-		return 1;
-	}
-	out.write((const char*)&a, sizeof(a));
-	out.close();
-	for (i = 0; i < 8; i++) a[i] = 0;  //clear array
-	ifstream in("array.dat");
-	if (!in)
-	{
-		cout << "File can't read\n";
-		return 1;
-	}
-	in.read(( char*)&a, sizeof(a));
-	for (i = 0; i < 8; i++)
-	{
-		if (a[i] % 2 == 0) a[i]++;
-		else a[i] += a[i];
-		cout << a[i] << ' ';
-	}
-	cout << endl;
-	in.close();
-	return 0;
-}
+//#include<iostream>
+//#include <fstream>
+//using namespace std;
+//int main(void)
+//{
+//	int a[] = { 1,2,3,4,5,6,7,8 };//2,3,6,5,10,7,14,9
+//	int i;
+//	ofstream out("array.dat");
+//	if (!out)
+//	{
+//		cout << "File can't write\n";
+//		return 1;
+//	}
+//	out.write((const char*)&a, sizeof(a));
+//	out.close();
+//	for (i = 0; i < 8; i++) a[i] = 0;  //clear array
+//	ifstream in("array.dat");
+//	if (!in)
+//	{
+//		cout << "File can't read\n";
+//		return 1;
+//	}
+//	in.read(( char*)&a, sizeof(a));
+//	for (i = 0; i < 8; i++)
+//	{
+//		if (a[i] % 2 == 0) a[i]++;
+//		else a[i] += a[i];
+//		cout << a[i] << ' ';
+//	}
+//	cout << endl;
+//	in.close();
+//	return 0;
+//}
