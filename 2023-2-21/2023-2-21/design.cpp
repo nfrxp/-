@@ -102,3 +102,95 @@
 //	}
 //	~CTeacher() { delete  coursename,pay; }
 //};
+
+
+//#include<iostream>
+//using namespace std;
+//const double PI = 3.14159;
+////公共基类
+//class Body {
+//private:
+//	double x;
+//public:
+//	Body(double a) {
+//		x = a;
+//	}
+//	virtual double v() = 0;
+//};
+//
+////正方体类
+//class Cube :public Body {
+//private:
+//	double b;
+//public:
+//	Cube(double B) :Body(B) {
+//		b = B;
+//	}
+//	virtual double v() { return PI * b * b * b; }
+//};
+//
+////球类
+//class Sphere :public Body {
+//private:
+//	double c;
+//public:
+//	Sphere(double C) :Body(C) {
+//		c = C;
+//	}
+//	virtual double v() { return 4.0 / 3 * PI * c * c * c; }
+//};
+//
+////圆柱类
+//class Column :public Body {
+//private:
+//	double d;
+//	double h;
+//
+//public:
+//	Column(double D, double H) :Body(D) {
+//		d = D;
+//		h = H;
+//	}
+//	virtual double v() { return PI * d * d * h; }
+//};
+//int main() {
+//	Cube cube1(3);
+//	Sphere sphere1(4);
+//	Column column1(5,6);
+//	cout << "正方体体积：" << cube1.v()
+//		<< "\n球体积：" << sphere1.v()
+//		<< "\n圆柱体积：" << column1.v() << endl;
+//	return 0;
+//}
+
+#include<iostream>
+using namespace std;
+
+class CPoint {
+private:
+	int m_x;
+	int m_y;
+public:
+	CPoint(int x, int y) {
+		m_x = x;
+		m_y = y;
+	}
+	int GetX() { return m_x; }
+	int GetY() { return m_y; }
+
+	//类内重载为成员函数
+	CPoint operator+(CPoint b) {
+		CPoint t(0,0);
+		t.m_x = this->m_x + b.m_x;
+		t.m_y = this->m_y + b.m_y;
+		return t;
+	}
+};
+int main() {
+	CPoint a1(1, 2);
+	CPoint a2(4, 9);
+	CPoint a3(0,0);
+	a3 = a1 + a2;
+	cout << a3.GetX() <<'\t' << a3.GetY() << endl;
+	return 0;
+}
