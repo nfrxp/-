@@ -2,7 +2,8 @@
 
 //顺序表的实现以及基本运算
 
-#include<iostream>
+#include <iostream>
+using namespace std;
 #include<stdio.h>
 #define MaxLen 100//定义表的最大容量
 typedef int elementType;//使用typedef要在语句末尾添加分号
@@ -214,9 +215,9 @@ void rndCList(seqList& L)
 	cout << "请输入要产生的随机数个数，n=";
 	cin >> n;
 
-	if (n > MAXLEN - 1)
+	if (n > MaxLen - 1)
 	{
-		cout << "您要求产生的随机数个数超出了查找表长度" << MAXLEN - 1 << "，创建顺序表失败。" << endl;
+		cout << "您要求产生的随机数个数超出了查找表长度" << MaxLen - 1 << "，创建顺序表失败。" << endl;
 		return;
 
 	}
