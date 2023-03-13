@@ -1,8 +1,9 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 
-//顺序表
+//顺序表的实现以及基本运算
 
 #include<iostream>
+#include<stdio.h>
 #define MaxLen 100//定义表的最大容量
 typedef int elementType;//使用typedef要在语句末尾添加分号
 
@@ -98,3 +99,135 @@ int listDelete(seqList* L, int i) {
 	L->listLen--;
 	return 2;
 }
+
+//7.打印顺序表中的所有元素
+void listPrint(seqList L) {
+	int i = 0;
+	for (i = 0; i < L.listLen; i++) {
+		cout<< L.data[i]<<' ';
+	}
+	cout << endl;
+}
+
+//8.交互输入数据元素，特殊输入结束输入
+void listInput(seqList* L) {
+	if (L->listLen > 0) {
+		cout << "顺序表已存在，请先初始化，再输入元素。" << endl;
+		return;
+	}
+	elementType x;
+	cout << "请输入元素值（整数，-999退出）：" << endl;
+	cout << "x=";
+	cin >> x;
+	while (x != -999) {
+		L->data[L->listLen] = x;
+		L->listLen++;
+		cout << "x=";
+		cin >> x;
+	}
+}
+
+//9.交互输入数据元素——指定元素个数
+void listInputC(seqList* L) {
+	if (L->listLen < 0) {
+		cout << "顺序表已存在，请先初始化，再输入元素。" << endl;
+		return;
+	}
+	int i = 0, n;
+	cout << "请输入元素个数：n=";
+	cin >> n;
+	cout << "请输入元素值：" << endl;
+	for (; i < n; i++) {
+		cin >> L->data[i];
+		L->listLen++;
+	}
+}
+
+//10.从数组输入元素值
+void listInputArr(seqList* L) {
+	if (L->listLen > 0) {
+		cout << "顺序表已存在，请先初始化，再输入元素。" << endl;
+		return;
+	}
+	int i, n;
+	elementType arr[6] = { 2,4,5,77,99,100 };
+	n = sizeof(arr) / sizeof(arr[0]);
+	for (i = 0; i < n; i++) {
+		L->data[i] = arr[i];
+		L->listLen++;
+	}
+}
+
+//11. 从文件输入数据元素
+int listInputFile(char fileName[], seqList* pL)
+{
+	FILE* pFile;     //定义顺序表的文件指针
+	char str[1000];  //存放读出一行文本的字符串
+	char strTemp[10]; //判断是否注释行
+	char* ss;
+
+	pFile = fopen(fileName, "r");
+	if (!pFile)
+	{
+		cout << "文件" << fileName << "打开失败。" << endl;//printf("文件CBiTree.CBT打开失败！\n");
+		return false;
+	}
+
+	ss = fgets(str, 1000, pFile);
+	strncpy(strTemp, str, 2);
+	while ((ss != NULL) && (strstr(strTemp, "//") != NULL))  //跳过注释行
+	{
+		ss = fgets(str, 1000, pFile);
+		strncpy(strTemp, str, 2);
+		//cout<<strTemp<<endl;
+	}
+	//循环结束，str中应该已经是文件标识，判断文件格式
+//cout<<str<<endl;
+	if (strstr(str, "seqList") == NULL)
+	{
+		printf("打开的文件格式错误！\n");
+		fclose(pFile); //关闭文件
+		return false;
+	}
+
+	//以下开始读取元素数据，一行一个元素数据
+	while (fgets(str, 1000, pFile) != NULL)
+	{
+		pL->data[pL->listLen] = atoi(str);//(elementType)str;
+		pL->listLen++;
+	}
+	fclose(pFile); //关闭文件
+	return true;
+
+}
+
+
+
+//随机数输入创建查找表开始------------------------------------------------------------------
+//随机数创建顺序表
+void rndCList(seqList& L)
+{
+	int i;
+	int n, m;
+
+	L.listLen = 0;
+	cout << "请输入要产生的随机数个数，n=";
+	cin >> n;
+
+	if (n > MAXLEN - 1)
+	{
+		cout << "您要求产生的随机数个数超出了查找表长度" << MAXLEN - 1 << "，创建顺序表失败。" << endl;
+		return;
+
+	}
+	cout << "请输入控制随机数大小参数，比如100以内数，请输入100，m=";
+	cin >> m;
+
+	srand((unsigned)time(NULL));	//产生随机数种子
+	//srand((unsigned)GetTickCount());	//产生随机数种子
+	for (i = 0; i < n; i++)                //随机数写入排序表A[]
+		L.data[i] = rand() % m;
+	L.listLen = n;                      //表长度为n
+	cout << endl;
+}
+//随机数输入创建查找表结束------------------------------------------------------------------
