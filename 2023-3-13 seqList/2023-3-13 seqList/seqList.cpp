@@ -62,6 +62,39 @@ int listLocate(seqList L, elementType x) {
 }
 
 //5.插入元素
-//功能：
-//参数：
-//返回值：
+//功能：在给定位置插入给定元素
+//参数：seqList指针变量，序号i，elementType x给定元素值
+//返回值：整型，表满0，位置非法1，插入成功2
+int listInsert(seqList* L, int i, elementType x) {
+	int j = L->listLen + 1;//序号
+	if (L->listLen == MaxLen)
+		return 0;
+	else if (i<1 || i>L->listLen + 1)
+		return 1;
+	else
+		while (j > i) {
+			L->data[j-1] = L->data[j - 2];
+			j--;
+		}
+	L->data[i - 1] = x;
+	L->listLen++;
+	return 2;
+}
+
+//6.删除元素
+//功能：删除顺序表中给定序号的元素
+//参数：seqList指针，i元素序号
+//返回值：整型，空表1，序号非法1，删除成功2
+int listDelete(seqList* L, int i) {
+	int j = i-1;
+	if (L->listLen <= 0)
+		return 0;
+	else if (i<1 || i>L->listLen)
+		return 1;
+	while (j < L->listLen - 1) {
+		L->data[j] = L->data[j+1];
+		j++;
+	}
+	L->listLen--;
+	return 2;
+}
