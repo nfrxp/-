@@ -28,7 +28,7 @@ void setList(seqList* L) {
 	cout << "请输入元素值，-999代表结束输入：" << endl;
 	cout << "x=";
 	cin >> x;
-	while (x != -999 && L->listLen<=MaxLen) {	//是否需要判断有重复的元素
+	while (x != -999 && L->listLen<=MaxLen) {	//此处不考虑有重复元素
 		L->data[L->listLen] = x;
 		L->listLen++;
 		cout << "x=";
@@ -50,10 +50,54 @@ bool subset(seqList* A, seqList* B) {
 	return true;
 }
 
+//递增有序的顺序表,判断A是否为B的子集
+bool subset2(seqList* A, seqList* B) {
+	if (A->listLen == 0)
+		return true;
+	if (A->data[0]<B->data[0] || A->data[A->listLen - 1]>B->data[B->listLen - 1])
+		return false;
+	int ia = 0,ib = 0;
+	for (ia = 0; ia < A->listLen; ia++) {
+		while (ib < B->listLen) {
+			if (A->data[ia] < B->data[ib])//有问题吗？
+				return false;
+			if (A->data[ia] == B->data[ib]) {
+				ib++;
+				break;
+			}
+			if (A->data[ia] > B->data[ib])
+				ib++;
+		}
+		if (ib == B->listLen)
+			return false;
+	}
+	return true;
 
+}
 
-
-
+//递增有序的顺序表,判断A是否为B的子集
+bool subset3(seqList* A, seqList* B) {
+	if (A->listLen == 0)
+		return true;
+	if (A->data[0]<B->data[0] || A->data[A->listLen - 1]>B->data[B->listLen - 1])
+		return false;
+	int ia = 0, ib = 0;
+	while (ia < A->listLen && ib < B->listLen) {
+		if (A->data[ia] == B->data[ib]) {
+			ia++; ib++;
+		}
+		else if (A->data[ia] > B->data[ib]) {
+			ib++;
+		}
+		else
+			return false;
+	}
+	if (ia == A->listLen)
+		return true;
+	else
+		return false;
+}
+        
 int main() {
 	seqList A, B;
 	initialList(&A);
@@ -64,7 +108,7 @@ int main() {
 	setList(&B);
 
 	//判断A是否属于B的子集
-	if (subset(&A, &B))
+	if (subset3(&A, &B))
 		cout << "A属于B的子集！" << endl;
 	else
 		cout << "A不属于B的子集！" << endl;
