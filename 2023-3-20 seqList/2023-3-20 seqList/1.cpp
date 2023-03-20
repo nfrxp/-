@@ -89,13 +89,6 @@ void listset(seqList* L) {
 
 }
 
-int main() {
-	seqList a;
-	initialList(&a);
-	listset(&a);
-	cout << a.listLen;
-	return 0;
-}
 
 
 //交互输入数据元素，指定数据个数
@@ -133,3 +126,95 @@ void listset(seqList* L, elementType arr[], int n) {
 
 
 //从文件输入元素
+int listInputFile(char fileName[], seqList* pL)
+{
+	FILE* pFile;     //定义顺序表的文件指针
+	char str[1000];  //存放读出一行文本的字符串
+	char strTemp[10]; //判断是否注释行
+	char* ss; 
+
+	pFile=fopen(fileName,"r");
+	if(!pFile)
+	{
+		cout<<"文件"<<fileName<<"打开失败。"<<endl;//printf("文件CBiTree.CBT打开失败！\n");
+		return false;
+	}
+	
+	ss=fgets(str,1000,pFile);
+	strncpy(strTemp,str,2);
+	while((ss!=NULL) && (strstr(strTemp,"//")!=NULL) )  //跳过注释行
+	{
+		ss=fgets(str,1000,pFile);
+		strncpy(strTemp,str,2);
+		//cout<<strTemp<<endl;
+	}
+	    //循环结束，str中应该已经是文件标识，判断文件格式
+	//cout<<str<<endl;
+	if(strstr(str,"seqList")==NULL)
+	{
+		printf("打开的文件格式错误！\n");
+		fclose(pFile); //关闭文件
+		return false;
+	}
+
+	//以下开始读取元素数据，一行一个元素数据
+	while(fgets(str,1000,pFile)!=NULL)
+	{
+		pL->data[pL->listLen]=atoi(str);//(elementType)str;
+		pL->listLen++;
+	}
+	fclose(pFile); //关闭文件
+	return true;
+
+}
+
+
+
+//随机数创建顺序表
+void randsetlist(seqList* L) {
+	int i = 0;//元素下标
+	int n = 0;//随机数个数
+	int m = 0;//控制随机数大小的参数
+	if (L->listLen > 0) {
+		cout << "顺序表已创建，请初始化！" << endl;
+		return;
+	}
+
+	cout << "请输入要产生随机数的个数：" << endl;
+	cin >> n;
+	if (n > MaxLen - 1) {//为什么不能等于MaxLen
+		cout << "个数超出表长度，创建失败！" << endl;
+		return;
+	}
+
+	cout << "请输入控制随机数大小的参数，如100以内的数，请输入100，m=" ;
+	cin >> m;
+	srand((unsigned)time(NULL));//产生随机数种子
+	//同srand((unsigned)GetTickCount)
+	for (i = 0; i < n; i++) {
+		L->data[i] = rand() % m;
+	}
+	L->listLen = n;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int main() {
+	seqList a;
+	initialList(&a);
+	listset(&a);
+	cout << a.listLen;
+	return 0;
+}
