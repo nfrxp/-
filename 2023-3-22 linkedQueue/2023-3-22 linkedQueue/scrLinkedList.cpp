@@ -51,7 +51,7 @@ bool outQueue(linkedQueue& Q, elementType& x) {
 	else {
 		node* u = Q->next->next;//u指向首元素
 		x = u->data;//取头元素值
-		Q->next->next = u->next;//头结点链接到新的头元素，包含变成空队列的情况：Q=Q->next;
+		Q->next->next = u->next;//头结点链接到新的头元素，包含变成空队列的情况：Q=Q->next？？;
 		//若只有一个元素（有头结点），Q->next->next和Q等价吗
 		delete u;//删除头元素
 		return true;
