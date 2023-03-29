@@ -89,9 +89,10 @@ bool listDelete(seqList* L, int i) {
 	else if (i<1 || i>L->listLen)//序号非法
 		return 1;
 	else {
-		int j ;
+		int j ,count=0;
 		for (j = i; j < L->listLen; j++) {
 			L->data[j - 1] = L->data[j];
+			count++;
 		}
 		L->listLen--;
 		return 2;
@@ -147,25 +148,42 @@ bool sameToList(seqList* L1, seqList* L2, seqList* L3) {
 		else
 			i++;
 	}
-	cout << "L1顺序表";
+	cout << "L1顺序表：";
 	showList(L1);
-	cout << "L2顺序表";
+	cout << "L2顺序表：";
 	showList(L2);
-	cout << "L3顺序表";
+	cout << "L3顺序表：";
 	showList(L3);
 	return 1;
 }
 
 
 //删除递增有序顺序表中重复元素，并统计移动次数
-
+bool sameDelete(seqList* L) {
+	if (L->listLen == 0)
+		return 0;
+	else {
+		cout << "L顺序表：";
+		showList(L);
+		int i;
+		for (i = 1; i <= L->listLen; i++) {
+			if (L->data[i - 1] == L->data[i - 2]) {
+				listDelete(L, i);
+				i--;
+			}
+		}
+		cout << "L删除后：";
+		showList(L);
+		return 1;
+	}
+}
 
 
 
 //递增有序顺序表C=A∪B
-void unionList(seqList L1, seqList L2, seqList* L3) {
+void mergeList(seqList L1, seqList L2, seqList* L3) {
 	int i = 0, j = 0, k = 0;
-	while (i < L1.listLen && j < L2.listLen) {
+	while (i < L1.listLen && j < L2.listLen && k<=MaxLen) {
 		if (L1.data[i] == L2.data[j]) {
 			L3->data[k] = L1.data[i];//listInsert函数插入亦可
 			i++;
@@ -189,6 +207,15 @@ void unionList(seqList L1, seqList L2, seqList* L3) {
 
 		}
 	}
+	if (k == MaxLen){
+		cout << "L1顺序表：";
+		showList(&L1);
+		cout << "L2顺序表：";
+		showList(&L2);
+		cout << "L3顺序表：";
+		showList(L3);
+		return;
+	}
 	while (i < L1.listLen) {
 		L3->data[k] = L1.data[i];
 		i++;
@@ -201,6 +228,62 @@ void unionList(seqList L1, seqList L2, seqList* L3) {
 		k++;
 		L3->listLen++;
 	}
+	cout << "L1顺序表：";
+	showList(&L1);
+	cout << "L2顺序表：";
+	showList(&L2);
+	cout << "L3顺序表：";
+	showList(L3);
+}
+
+//递增有序顺序表C=A∩B
+void intersectList(seqList L1, seqList L2, seqList* L3) {
+	int i = 0, j = 0, k = 0;
+	while (i < L1.listLen && j < L2.listLen) {//k不可能大于等于MaxLen
+		if (L1.data[i] == L2.data[j]) {
+			L3->data[k] = L1.data[i];
+			i++;
+			j++;
+			k++;
+			L3->listLen++;
+		}
+		else if (L1.data[i] < L2.data[j])
+			i++;
+		else
+			j++;
+	}
+	cout << "L1顺序表：";
+	showList(&L1);
+	cout << "L2顺序表：";
+	showList(&L2);
+	cout << "L3顺序表：";
+	showList(L3);
 }
 
 
+//递增有序顺序表C=A-B
+void exceptList(seqList L1, seqList L2, seqList* L3) {
+	int i = 0, j = 0, k = 0;
+	while (i < L1.listLen && j < L2.listLen) {//k不可能大于等于MaxLen
+		if (L1.data[i] == L2.data[j]) {
+			i++;
+			j++;
+		}
+		else if (L1.data[i] < L2.data[j]) {
+			L3->data[k] = L1.data[i];
+			i++;
+			k++; L3->listLen++;
+		}
+		else {
+			j++;
+		}
+	}
+	cout << "L1顺序表：";
+	showList(&L1);
+	cout << "L2顺序表：";
+	showList(&L2);
+	cout << "L3顺序表：";
+	showList(L3);
+}
+
+//递增有序顺序表A=A∪B
