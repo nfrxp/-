@@ -4,13 +4,8 @@
 #include<iostream>
 using namespace std;
 #include "seqList.h"
-
-int main() {
-	seqList L1, L2, L3;
-	int n1 = 0, n2 = 0, n3 = 0;
-	int i = 0;
-	elementType x=0;
-	int Choice = -1;
+void printBoard()
+{
 	//打印主菜单
 	cout << "顺序表测试程序" << endl;
 	cout << "*0  -退出" << endl;
@@ -36,9 +31,18 @@ int main() {
 	cout << "*76 -递增有序顺序表A=A-B" << endl;
 	cout << "*8  -递增有序顺序表表示集合A、B，判定A是否B的子集" << endl;
 	cout << "*9   -求升序列的中位数" << endl;
+}
+
+
+int main() {
+	seqList L1, L2, L3;
+	int n1 = 0, n2 = 0, n3 = 0;
+	int i = 0;
+	elementType x=0;
+	int Choice = -1;
+	printBoard();
 	do {
 
-		
 		cout << "请输入操作序号：";
 		cin >> Choice;
 		switch (Choice) {
@@ -107,7 +111,47 @@ int main() {
 			cout << "删除后：";
 			showList(&L1);
 			break;
-		case 4:
+		case 4://分解奇偶项结点（值的奇偶性）
+			listDivide(&L1);
+			break;
+		case 5://存放两递增有序顺序表的公共元素到新顺序表L3中
+			sameToList(L1, L2, &L3);
+			break;
+		case 6://删除递增有序顺序表中重复元素，并统计移动次数
+			sameDelete(&L1);
+			break;
+		case 71://递增有序顺序表C=A∪B
+			mergeList(L1, L2, &L3);
+			if (mergeList(L1, L2, &L3) == 0)
+				cout << "表C溢出！" << endl;
+			break;
+		case 72://递增有序顺序表C = A∩B
+			intersectList(L1, L2, &L3);
+			break;
+		case 73://递增有序顺序表C=A-B
+			exceptList(L1, L2, &L3);
+			break;
+		case 74://递增有序顺序表A=A∪B
+			mergeList2(&L1, L2);
+			if (mergeList2(&L1, L2) == 0)
+				cout << "表A溢出！" << endl;
+			break;
+		case 75://递增有序顺序表A=A∩B
+			intersectList2(&L1, L2);
+			break;
+		case 76://递增有序顺序表A=A-B
+			exceptList2(&L1, L2);
+			break;
+		case 8://递增有序顺序表表示集合A、B，判定A是否B的子集
+			if (subsetList(L1, L2) == 1)
+				cout << "A是B的子集！" << endl;
+			else
+				cout << "A不是B的子集！" << endl;
+			break;
+		case 9://求两升序列的中位数
+			midList(L1, L2,&L3);
+			break;
+
 
 		}
 

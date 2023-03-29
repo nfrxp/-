@@ -110,7 +110,7 @@ bool listInsert2(seqList* L, elementType x) {
 }
 
 
-//4. 分解奇偶项结点（值的奇偶性）
+//4. 分解奇偶项结点（值的奇偶性）//自己创建新表
 bool listDivide(seqList* L) {
 	if (L->listLen == 0)
 		return 0;
@@ -142,25 +142,25 @@ bool listDivide(seqList* L) {
 
 
 //5. 存放两递增有序顺序表的公共元素到新顺序表L3中
-bool sameToList(seqList* L1, seqList* L2, seqList* L3) {
-	if (L1->listLen == 0 || L2->listLen == 0)
+bool sameToList(seqList L1, seqList L2, seqList* L3) {
+	if (L1.listLen == 0 || L2.listLen == 0)
 		return 0;
 	int i=0, j=0, k=0;//i为L1元素下标；j为L2元素下标；k为L3元素下标
-	while (i < L1->listLen && j < L2->listLen) {
-		if (L1->data[i] == L2->data[j]) {
-			L3->data[k] = L1->data[i];
+	while (i < L1.listLen && j < L2.listLen) {
+		if (L1.data[i] == L2.data[j]) {
+			L3->data[k] = L1.data[i];
 			i++;
 			j++;
 		}
-		else if (L1->data[i] > L2->data[j])
+		else if (L1.data[i] > L2.data[j])
 			j++;
 		else
 			i++;
 	}
 	cout << "L1顺序表：";
-	showList(L1);
+	showList(&L1);
 	cout << "L2顺序表：";
-	showList(L2);
+	showList(&L2);
 	cout << "L3顺序表：";
 	showList(L3);
 	return 1;
@@ -374,7 +374,7 @@ void exceptList2(seqList *L1, seqList L2) {
 }
 
 //8. 递增有序顺序表表示集合A、B，判定A是否B的子集
-bool subset(seqList L1, seqList L2) {
+bool subsetList(seqList L1, seqList L2) {
 	int i = 0, j = 0;
 	while (i < L1.listLen && j < L2.listLen) {
 		if (L1.data[i] == L2.data[j]) {
