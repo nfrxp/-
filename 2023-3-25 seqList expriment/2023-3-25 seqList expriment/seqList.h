@@ -46,7 +46,17 @@ void showList(seqList* L) {
 	cout << endl;
 }
 
-//插入元素
+//交互创建顺序表
+void creatList(seqList* L, int n) {
+	int i = 0;
+	while (i < n) {
+		cin >> L->data[i];
+		i++;
+		L->listLen++;
+	}
+}
+
+//1. 插入元素
 //返回值为0：表满   返回值为1：序号不合法   返回值为2：插入成功
 int listInsert(seqList* L, int i, elementType x) {
 	if (L->listLen == MaxLen)
@@ -64,7 +74,26 @@ int listInsert(seqList* L, int i, elementType x) {
 	}
 }
 
-//插入元素2，在递增有序表中插入x
+//2. 删除运算
+//返回值为0：表空   返回值为1：序号非法   返回值为2：删除成功
+bool listDelete(seqList* L, int i) {
+	if (L->listLen == 0)//表空
+		return 0;
+	else if (i<1 || i>L->listLen)//序号非法
+		return 1;
+	else {
+		int j, count = 0;
+		for (j = i; j < L->listLen; j++) {
+			L->data[j - 1] = L->data[j];
+			count++;
+		}
+		L->listLen--;
+		return 2;
+	}
+}
+
+
+//3. 插入元素2，在递增有序表中插入x
 //返回值为0：表满   返回值为1：插入成功
 bool listInsert2(seqList* L, elementType x) {
 	if (L->listLen == MaxLen)
@@ -81,27 +110,7 @@ bool listInsert2(seqList* L, elementType x) {
 }
 
 
-//删除运算
-//返回值为0：表空   返回值为1：序号非法   返回值为2：删除成功
-bool listDelete(seqList* L, int i) {
-	if (L->listLen==0)//表空
-		return 0;
-	else if (i<1 || i>L->listLen)//序号非法
-		return 1;
-	else {
-		int j ,count=0;
-		for (j = i; j < L->listLen; j++) {
-			L->data[j - 1] = L->data[j];
-			count++;
-		}
-		L->listLen--;
-		return 2;
-	}
-}
-
-
-
-//分解奇偶项结点（值的奇偶性）
+//4. 分解奇偶项结点（值的奇偶性）
 bool listDivide(seqList* L) {
 	if (L->listLen == 0)
 		return 0;
@@ -132,7 +141,7 @@ bool listDivide(seqList* L) {
 }
 
 
-//存放两递增有序顺序表的公共元素到新顺序表L3中
+//5. 存放两递增有序顺序表的公共元素到新顺序表L3中
 bool sameToList(seqList* L1, seqList* L2, seqList* L3) {
 	if (L1->listLen == 0 || L2->listLen == 0)
 		return 0;
@@ -158,7 +167,7 @@ bool sameToList(seqList* L1, seqList* L2, seqList* L3) {
 }
 
 
-//删除递增有序顺序表中重复元素，并统计移动次数
+//6. 删除递增有序顺序表中重复元素，并统计移动次数
 bool sameDelete(seqList* L) {
 	if (L->listLen == 0)
 		return 0;
@@ -180,7 +189,7 @@ bool sameDelete(seqList* L) {
 
 
 
-//递增有序顺序表C=A∪B
+//71.递增有序顺序表C=A∪B
 bool mergeList(seqList L1, seqList L2, seqList* L3) {
 	int i = 0, j = 0, k = 0;
 	while (i < L1.listLen && j < L2.listLen && k<=MaxLen) {
@@ -237,7 +246,7 @@ bool mergeList(seqList L1, seqList L2, seqList* L3) {
 	return 1;
 }
 
-//递增有序顺序表C=A∩B
+//72.递增有序顺序表C=A∩B
 void intersectList(seqList L1, seqList L2, seqList* L3) {
 	int i = 0, j = 0, k = 0;
 	while (i < L1.listLen && j < L2.listLen) {//k不可能大于等于MaxLen
@@ -262,7 +271,7 @@ void intersectList(seqList L1, seqList L2, seqList* L3) {
 }
 
 
-//递增有序顺序表C=A-B
+//73.递增有序顺序表C=A-B
 void exceptList(seqList L1, seqList L2, seqList* L3) {
 	int i = 0, j = 0, k = 0;
 	while (i < L1.listLen && j < L2.listLen) {//k不可能大于等于MaxLen
@@ -287,7 +296,7 @@ void exceptList(seqList L1, seqList L2, seqList* L3) {
 	showList(L3);
 }
 
-//递增有序顺序表A=A∪B
+//74.递增有序顺序表A=A∪B
 bool mergeList2(seqList*L1,seqList L2){
 	int i = 0, j = 0;
 	while (i < L1->listLen && i < MaxLen && j < L2.listLen) {
@@ -323,7 +332,7 @@ bool mergeList2(seqList*L1,seqList L2){
 	return 1;
 }
 
-//递增有序顺序表A=A∩B
+//75.递增有序顺序表A=A∩B
 void intersectList2(seqList* L1, seqList L2) {
 	int i = 0, j = 0;
 	while (i < L1->listLen && j < L2.listLen) {
@@ -344,7 +353,7 @@ void intersectList2(seqList* L1, seqList L2) {
 
 
 
-//递增有序顺序表A=A-B
+//76.递增有序顺序表A=A-B
 void exceptList2(seqList *L1, seqList L2) {
 	int i = 0, j = 0, k = 0;
 	while (i < L1->listLen && j < L2.listLen) {//k不可能大于等于MaxLen
@@ -364,7 +373,7 @@ void exceptList2(seqList *L1, seqList L2) {
 	showList(&L2);
 }
 
-//递增有序顺序表表示集合A、B，判定A是否B的子集
+//8. 递增有序顺序表表示集合A、B，判定A是否B的子集
 bool subset(seqList L1, seqList L2) {
 	int i = 0, j = 0;
 	while (i < L1.listLen && j < L2.listLen) {
@@ -382,7 +391,7 @@ bool subset(seqList L1, seqList L2) {
 	return 1;
 }
 
-//9. 求升序列的中位数
+//9. 求两升序列的中位数
 void midList(seqList L1, seqList L2,seqList*L3) {
 	mergeList(L1, L2, L3);//合并升序列
 	int i = L3->listLen/2;
