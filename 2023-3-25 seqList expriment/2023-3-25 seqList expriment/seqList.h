@@ -181,7 +181,7 @@ bool sameDelete(seqList* L) {
 
 
 //递增有序顺序表C=A∪B
-void mergeList(seqList L1, seqList L2, seqList* L3) {
+bool mergeList(seqList L1, seqList L2, seqList* L3) {
 	int i = 0, j = 0, k = 0;
 	while (i < L1.listLen && j < L2.listLen && k<=MaxLen) {
 		if (L1.data[i] == L2.data[j]) {
@@ -214,7 +214,7 @@ void mergeList(seqList L1, seqList L2, seqList* L3) {
 		showList(&L2);
 		cout << "L3顺序表：";
 		showList(L3);
-		return;
+		return 0;
 	}
 	while (i < L1.listLen) {
 		L3->data[k] = L1.data[i];
@@ -234,6 +234,7 @@ void mergeList(seqList L1, seqList L2, seqList* L3) {
 	showList(&L2);
 	cout << "L3顺序表：";
 	showList(L3);
+	return 1;
 }
 
 //递增有序顺序表C=A∩B
@@ -287,3 +288,104 @@ void exceptList(seqList L1, seqList L2, seqList* L3) {
 }
 
 //递增有序顺序表A=A∪B
+bool mergeList2(seqList*L1,seqList L2){
+	int i = 0, j = 0;
+	while (i < L1->listLen && i < MaxLen && j < L2.listLen) {
+		if (L1->data[i] == L2.data[j]) {
+			i++;
+			j++;
+		}
+		else if (L1->data[i] < L2.data[j]) {
+			i++;
+		}
+		else {
+			listInsert(L1, i + 1, L2.data[j]);
+			i++;
+			j++;
+		}
+	}
+	if (i == MaxLen) {
+		cout << "L1顺序表：";
+		showList(L1);
+		cout << "L2顺序表：";
+		showList(&L2);
+		return 0;
+	}
+	while (j < L2.listLen) {
+		listInsert(L1, i + 1, L2.data[j]);
+		i++;
+		j++;
+	}
+	cout << "L1顺序表：";
+	showList(L1);
+	cout << "L2顺序表：";
+	showList(&L2);
+	return 1;
+}
+
+//递增有序顺序表A=A∩B
+void intersectList2(seqList* L1, seqList L2) {
+	int i = 0, j = 0;
+	while (i < L1->listLen && j < L2.listLen) {
+		if (L1->data[i] == L2.data[j]) {
+			i++;
+			j++;
+		}
+		else if (L1->data[i] < L2.data[j])
+			listDelete(L1, i + 1);
+		else
+			j++;
+	}
+	cout << "L1顺序表：";
+	showList(L1);
+	cout << "L2顺序表：";
+	showList(&L2);
+}
+
+
+
+//递增有序顺序表A=A-B
+void exceptList2(seqList *L1, seqList L2) {
+	int i = 0, j = 0, k = 0;
+	while (i < L1->listLen && j < L2.listLen) {//k不可能大于等于MaxLen
+		if (L1->data[i] == L2.data[j]) {
+			listDelete(L1, i + 1);
+		}
+		else if (L1->data[i] < L2.data[j]) {
+			i++;
+		}
+		else {
+			j++;
+		}
+	}
+	cout << "L1顺序表：";
+	showList(L1);
+	cout << "L2顺序表：";
+	showList(&L2);
+}
+
+//递增有序顺序表表示集合A、B，判定A是否B的子集
+bool subset(seqList L1, seqList L2) {
+	int i = 0, j = 0;
+	while (i < L1.listLen && j < L2.listLen) {
+		if (L1.data[i] == L2.data[j]) {
+			i++;
+			j++;
+		}
+		else if (L1.data[i] < L2.data[j]) {
+			return 0;
+		}
+		else{
+			j++;
+		}
+	}
+	return 1;
+}
+
+//9. 求升序列的中位数
+void midList(seqList L1, seqList L2,seqList*L3) {
+	mergeList(L1, L2, L3);//合并升序列
+	int i = L3->listLen/2;
+	cout << "中位数为" << L3->data[i-1];
+}
+
