@@ -30,25 +30,30 @@ int listLocate(seqList* L, elementType x) {
 }
 
 //按序号取元素
-bool getElement(seqList* L, int i, elementType* x) {
-	if (i<1 || i>L->listLen)
+bool getElement(seqList L, int i, elementType* x) {
+	if (i<1 || i>L.listLen)
 		return 0;//序号非法
-	*x = L->data[i - 1];
+	*x = L.data[i - 1];
 	return 1;
 }
 
 //序号从小到大依次输出顺序表元素
-void showList(seqList* L) {
+void showList(seqList L) {
 	int i;
-	for (i = 0; i < L->listLen; i++) {
-		cout << L->data[i] << ' ';
+	for (i = 0; i < L.listLen; i++) {
+		cout << L.data[i] << ' ';
 	}
 	cout << endl;
 }
 
 //交互创建顺序表
 void creatList(seqList* L, int n) {
+	if (L->listLen > 0) {
+		cout << "顺序表已存在，请先初始化！" << endl;
+		return;
+	}
 	int i = 0;
+	cout << "请输入值：";
 	while (i < n) {
 		cin >> L->data[i];
 		i++;
@@ -68,7 +73,7 @@ int listInsert(seqList* L, int i, elementType x) {
 		for (j = L->listLen + 1; j > i; j--) {
 			L->data[j - 1] = L->data[j - 2];
 		}
-		L->data[j - 1] = x;
+		L->data[i - 1] = x;
 		L->listLen++;
 		return 2;
 	}
@@ -76,18 +81,21 @@ int listInsert(seqList* L, int i, elementType x) {
 
 //2. 删除运算
 //返回值为0：表空   返回值为1：序号非法   返回值为2：删除成功
-bool listDelete(seqList* L, int i) {
+int listDelete(seqList* L, int i) {
+	int j, count = 0;
 	if (L->listLen == 0)//表空
 		return 0;
 	else if (i<1 || i>L->listLen)//序号非法
+	{
 		return 1;
+	}
 	else {
-		int j, count = 0;
 		for (j = i; j < L->listLen; j++) {
 			L->data[j - 1] = L->data[j];
 			count++;
 		}
 		L->listLen--;
+		cout << "移动次数" << count << endl;
 		return 2;
 	}
 }
@@ -110,41 +118,32 @@ bool listInsert2(seqList* L, elementType x) {
 }
 
 
-//4. 分解奇偶项结点（值的奇偶性）//自己创建新表
-bool listDivide(seqList* L) {
-	if (L->listLen == 0)
+//4. 分解奇偶项结点（值的奇偶性）
+bool listDivide(seqList* L1,seqList*L2,seqList*L3) {
+	if (L1->listLen == 0)
 		return 0;
-	seqList L1, L2;//L1存放奇项,L2存放偶项
-	initialList(&L1);
-	initialList(&L2);
-	int i, j1, j2;
-	//elementType temp;
-	for (i = 0, j1 = 0, j2 = 0; i < L->listLen; i++) {
-		if (L->data[i] % 2 == 0) {
-			L2.data[j2] = L->data[i];
+	int i, j2, j3;
+	for (i = 0, j2 = 0, j3 = 0; i < L1->listLen; i++) {
+		if (L1->data[i] % 2 == 0) {
+			L3->data[j2] = L1->data[i];
 			j2++;
+			L3->listLen++;
 			continue;
 		}
 		else {
-			L1.data[j1] = L->data[i];
-			j1++;
+			L2->data[j2] = L1->data[i];
+			j2++;
+			L2->listLen++;
 			continue;
 		}
 	}
-	cout << "原表：";
-	showList(L);
-	cout << "奇表：";
-	showList(&L1);
-	cout << "偶表：";
-	showList(&L2);
+
 	return 1;
 }
 
 
 //5. 存放两递增有序顺序表的公共元素到新顺序表L3中
-bool sameToList(seqList L1, seqList L2, seqList* L3) {
-	if (L1.listLen == 0 || L2.listLen == 0)
-		return 0;
+void sameToList(seqList L1, seqList L2, seqList* L3) {
 	int i=0, j=0, k=0;//i为L1元素下标；j为L2元素下标；k为L3元素下标
 	while (i < L1.listLen && j < L2.listLen) {
 		if (L1.data[i] == L2.data[j]) {
@@ -158,33 +157,24 @@ bool sameToList(seqList L1, seqList L2, seqList* L3) {
 			i++;
 	}
 	cout << "L1顺序表：";
-	showList(&L1);
+	showList(L1);
 	cout << "L2顺序表：";
-	showList(&L2);
+	showList(L2);
 	cout << "L3顺序表：";
-	showList(L3);
-	return 1;
+	showList(*L3);
 }
 
 
 //6. 删除递增有序顺序表中重复元素，并统计移动次数
-bool sameDelete(seqList* L) {
-	if (L->listLen == 0)
-		return 0;
-	else {
-		cout << "L顺序表：";
-		showList(L);
-		int i;
-		for (i = 1; i <= L->listLen; i++) {
-			if (L->data[i - 1] == L->data[i - 2]) {
-				listDelete(L, i);
-				i--;
-			}
+void sameDelete(seqList* L) {
+	int i;
+	for (i = 1; i <= L->listLen; i++) {
+		if (L->data[i - 1] == L->data[i - 2]) {
+			listDelete(L, i);
+			i--;
 		}
-		cout << "L删除后：";
-		showList(L);
-		return 1;
 	}
+
 }
 
 
@@ -217,12 +207,6 @@ bool mergeList(seqList L1, seqList L2, seqList* L3) {
 		}
 	}
 	if (k == MaxLen){
-		cout << "L1顺序表：";
-		showList(&L1);
-		cout << "L2顺序表：";
-		showList(&L2);
-		cout << "L3顺序表：";
-		showList(L3);
 		return 0;
 	}
 	while (i < L1.listLen) {
@@ -237,12 +221,6 @@ bool mergeList(seqList L1, seqList L2, seqList* L3) {
 		k++;
 		L3->listLen++;
 	}
-	cout << "L1顺序表：";
-	showList(&L1);
-	cout << "L2顺序表：";
-	showList(&L2);
-	cout << "L3顺序表：";
-	showList(L3);
 	return 1;
 }
 
@@ -262,12 +240,7 @@ void intersectList(seqList L1, seqList L2, seqList* L3) {
 		else
 			j++;
 	}
-	cout << "L1顺序表：";
-	showList(&L1);
-	cout << "L2顺序表：";
-	showList(&L2);
-	cout << "L3顺序表：";
-	showList(L3);
+
 }
 
 
@@ -289,11 +262,11 @@ void exceptList(seqList L1, seqList L2, seqList* L3) {
 		}
 	}
 	cout << "L1顺序表：";
-	showList(&L1);
+	showList(L1);
 	cout << "L2顺序表：";
-	showList(&L2);
+	showList(L2);
 	cout << "L3顺序表：";
-	showList(L3);
+	showList(*L3);
 }
 
 //74.递增有序顺序表A=A∪B
@@ -315,9 +288,9 @@ bool mergeList2(seqList*L1,seqList L2){
 	}
 	if (i == MaxLen) {
 		cout << "L1顺序表：";
-		showList(L1);
+		showList(*L1);
 		cout << "L2顺序表：";
-		showList(&L2);
+		showList(L2);
 		return 0;
 	}
 	while (j < L2.listLen) {
@@ -326,9 +299,9 @@ bool mergeList2(seqList*L1,seqList L2){
 		j++;
 	}
 	cout << "L1顺序表：";
-	showList(L1);
+	showList(*L1);
 	cout << "L2顺序表：";
-	showList(&L2);
+	showList(L2);
 	return 1;
 }
 
@@ -346,9 +319,9 @@ void intersectList2(seqList* L1, seqList L2) {
 			j++;
 	}
 	cout << "L1顺序表：";
-	showList(L1);
+	showList(*L1);
 	cout << "L2顺序表：";
-	showList(&L2);
+	showList(L2);
 }
 
 
@@ -367,10 +340,7 @@ void exceptList2(seqList *L1, seqList L2) {
 			j++;
 		}
 	}
-	cout << "L1顺序表：";
-	showList(L1);
-	cout << "L2顺序表：";
-	showList(&L2);
+
 }
 
 //8. 递增有序顺序表表示集合A、B，判定A是否B的子集
