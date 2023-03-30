@@ -167,7 +167,7 @@ int main() {
 			showList(L1);
 			cout << "顺序表L2：";
 			showList(L2);
-			cout << "顺序表L3：";
+			cout << "存放公共元素的顺序表L3：";
 			showList(L3);
 			Sleep(3000);
 			system("cls");
@@ -249,6 +249,7 @@ int main() {
 			cout << "原顺序表A：";
 			showList(L1);
 			cout << "原顺序表B：";
+			showList(L1);
 			temp=mergeList2(&L1, L2);
 			cout << "操作后：" << endl;
 			if (temp == 0)
@@ -256,7 +257,7 @@ int main() {
 			cout << "顺序表A：";
 			showList(L1);
 			cout << "顺序表B：";
-			showList(L3);
+			showList(L2);
 			Sleep(3000);
 			system("cls");
 			printBoard();
@@ -267,9 +268,11 @@ int main() {
 			cout << "原顺序表B：";
 			showList(L2);
 			intersectList2(&L1, L2);
+			cout << "操作后：" << endl;
 			cout << "顺序表A：";
 			showList(L1);
 			cout << "顺序表B：";
+			showList(L2);
 			Sleep(3000);
 			system("cls");
 			printBoard();
@@ -280,9 +283,11 @@ int main() {
 			cout << "原顺序表B：";
 			showList(L2);
 			exceptList2(&L1, L2);
+			cout << "操作后：" << endl;
 			cout << "顺序表A：";
 			showList(L1);
 			cout << "顺序表B：";
+			showList(L2);
 			Sleep(3000);
 			system("cls");
 			printBoard();

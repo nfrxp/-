@@ -126,7 +126,7 @@ bool listDivide(seqList L1,seqList*L2,seqList*L3) {
 	for (i = 0, j2 = 0, j3 = 0; i < L1.listLen; i++) {
 		if (L1.data[i] % 2 == 0) {
 			L3->data[j3] = L1.data[i];
-			j2++;
+			j3++;
 			L3->listLen++;
 			continue;
 		}
@@ -157,12 +157,6 @@ void sameToList(seqList L1, seqList L2, seqList* L3) {
 		else//若L2大，L1下标i加一
 			i++;
 	}
-	cout << "L1顺序表：";
-	showList(L1);
-	cout << "L2顺序表：";
-	showList(L2);
-	cout << "L3顺序表：";
-	showList(*L3);
 }
 
 
@@ -170,7 +164,7 @@ void sameToList(seqList L1, seqList L2, seqList* L3) {
 void sameDelete(seqList* L) {
 	int i;
 	for (i = 1; i <= L->listLen; i++) {
-		if (L->data[i - 1] == L->data[i - 2]) {
+		if (L->data[i-1]==L->data[i-2]) {
 			listDelete(L, i);
 			i--;
 		}
