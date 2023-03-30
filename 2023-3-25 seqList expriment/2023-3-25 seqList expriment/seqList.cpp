@@ -117,11 +117,11 @@ int main() {
 			cin >> i;
 			temp=listDelete(&L1, i);
 			if (temp == 0)
-				cout << "表空，插入失败！" << endl;
+				cout << "表空，删除失败！" << endl;
 			else if (temp == 1)
 				cout << "序号非法，请重新输入！" << endl;
 			else {
-				cout << "插入后：";
+				cout << "删除后：";
 				showList(L1);
 			}
 			Sleep(3000);
@@ -129,7 +129,7 @@ int main() {
 			printBoard();
 			break;
 		case 3://递增有序表中插入x
-			cout << "删除前：";
+			cout << "插入前：";
 			showList(L1);
 			cout << "请输入值x：";
 			cin >> x;
@@ -145,7 +145,7 @@ int main() {
 			printBoard();
 			break;
 		case 4://分解奇偶项结点（值的奇偶性）
-			temp=listDivide(&L1, &L2, &L3);
+			temp=listDivide(L1, &L2, &L3);
 			if (temp == 0)
 				cout << "空表，分解失败！" << endl;
 			else {
@@ -191,9 +191,9 @@ int main() {
 			showList(L2);
 			cout << "顺序表C：";
 			showList(L3);
-			mergeList(L1, L2, &L3);
+			temp=mergeList(L1, L2, &L3);
 			cout << "操作后：" << endl;
-			if (mergeList(L1, L2, &L3) == 0)
+			if (temp == 0)
 				cout << "表C溢出！" << endl;
 			cout << "顺序表A：";
 			showList(L1);
@@ -249,9 +249,9 @@ int main() {
 			cout << "原顺序表A：";
 			showList(L1);
 			cout << "原顺序表B：";
-			mergeList2(&L1, L2);
+			temp=mergeList2(&L1, L2);
 			cout << "操作后：" << endl;
-			if (mergeList2(&L1, L2) == 0)
+			if (temp == 0)
 				cout << "表A溢出！" << endl;
 			cout << "顺序表A：";
 			showList(L1);

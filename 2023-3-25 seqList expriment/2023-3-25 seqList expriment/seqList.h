@@ -5,8 +5,8 @@
 using namespace std;
 typedef int elementType;
 typedef struct {
-	elementType data[MaxLen];
-	int listLen;
+	elementType data[MaxLen];//数据域
+	int listLen;//顺序表长度分量
 }seqList;
 
 //初始化顺序表
@@ -119,25 +119,24 @@ bool listInsert2(seqList* L, elementType x) {
 
 
 //4. 分解奇偶项结点（值的奇偶性）
-bool listDivide(seqList* L1,seqList*L2,seqList*L3) {
-	if (L1->listLen == 0)
+bool listDivide(seqList L1,seqList*L2,seqList*L3) {
+	if (L1.listLen == 0)
 		return 0;
 	int i, j2, j3;
-	for (i = 0, j2 = 0, j3 = 0; i < L1->listLen; i++) {
-		if (L1->data[i] % 2 == 0) {
-			L3->data[j2] = L1->data[i];
+	for (i = 0, j2 = 0, j3 = 0; i < L1.listLen; i++) {
+		if (L1.data[i] % 2 == 0) {
+			L3->data[j3] = L1.data[i];
 			j2++;
 			L3->listLen++;
 			continue;
 		}
 		else {
-			L2->data[j2] = L1->data[i];
+			L2->data[j2] = L1.data[i];
 			j2++;
 			L2->listLen++;
 			continue;
 		}
 	}
-
 	return 1;
 }
 
@@ -146,14 +145,16 @@ bool listDivide(seqList* L1,seqList*L2,seqList*L3) {
 void sameToList(seqList L1, seqList L2, seqList* L3) {
 	int i=0, j=0, k=0;//i为L1元素下标；j为L2元素下标；k为L3元素下标
 	while (i < L1.listLen && j < L2.listLen) {
-		if (L1.data[i] == L2.data[j]) {
+		if (L1.data[i] == L2.data[j]) {//若元素相等，传给L3
 			L3->data[k] = L1.data[i];
 			i++;
 			j++;
+			k++;
+			L3->listLen++;
 		}
-		else if (L1.data[i] > L2.data[j])
+		else if (L1.data[i] > L2.data[j])//若L1大，L2下标j加一
 			j++;
-		else
+		else//若L2大，L1下标i加一
 			i++;
 	}
 	cout << "L1顺序表：";
@@ -184,12 +185,11 @@ bool mergeList(seqList L1, seqList L2, seqList* L3) {
 	int i = 0, j = 0, k = 0;
 	while (i < L1.listLen && j < L2.listLen && k<=MaxLen) {
 		if (L1.data[i] == L2.data[j]) {
-			L3->data[k] = L1.data[i];//listInsert函数插入亦可
+			L3->data[k] = L1.data[i];//可直接调用入队函数listInsert
 			i++;
 			j++;
 			k++;
 			L3->listLen++;
-
 		}
 		else if (L1.data[i] < L2.data[j]) {
 			L3->data[k] = L1.data[i];
@@ -261,12 +261,6 @@ void exceptList(seqList L1, seqList L2, seqList* L3) {
 			j++;
 		}
 	}
-	cout << "L1顺序表：";
-	showList(L1);
-	cout << "L2顺序表：";
-	showList(L2);
-	cout << "L3顺序表：";
-	showList(*L3);
 }
 
 //74.递增有序顺序表A=A∪B
@@ -287,10 +281,6 @@ bool mergeList2(seqList*L1,seqList L2){
 		}
 	}
 	if (i == MaxLen) {
-		cout << "L1顺序表：";
-		showList(*L1);
-		cout << "L2顺序表：";
-		showList(L2);
 		return 0;
 	}
 	while (j < L2.listLen) {
@@ -298,10 +288,6 @@ bool mergeList2(seqList*L1,seqList L2){
 		i++;
 		j++;
 	}
-	cout << "L1顺序表：";
-	showList(*L1);
-	cout << "L2顺序表：";
-	showList(L2);
 	return 1;
 }
 
@@ -318,10 +304,7 @@ void intersectList2(seqList* L1, seqList L2) {
 		else
 			j++;
 	}
-	cout << "L1顺序表：";
-	showList(*L1);
-	cout << "L2顺序表：";
-	showList(L2);
+
 }
 
 
@@ -340,21 +323,20 @@ void exceptList2(seqList *L1, seqList L2) {
 			j++;
 		}
 	}
-
 }
 
 //8. 递增有序顺序表表示集合A、B，判定A是否B的子集
 bool subsetList(seqList L1, seqList L2) {
 	int i = 0, j = 0;
 	while (i < L1.listLen && j < L2.listLen) {
-		if (L1.data[i] == L2.data[j]) {
+		if (L1.data[i] == L2.data[j]) {//元素相等
 			i++;
 			j++;
 		}
-		else if (L1.data[i] < L2.data[j]) {
+		else if (L1.data[i] < L2.data[j]) {//A元素小于B元素
 			return 0;
 		}
-		else{
+		else{//A元素大于B元素
 			j++;
 		}
 	}
