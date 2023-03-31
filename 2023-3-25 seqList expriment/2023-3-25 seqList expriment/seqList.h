@@ -15,15 +15,15 @@ void initialList(seqList* L) {
 }
 
 //求顺序表长度
-int getLength(seqList* L) {
-	return L->listLen;
+int getLength(seqList L) {
+	return L.listLen;
 }
 
 //按值查找元素
-int listLocate(seqList* L, elementType x) {
+int listLocate(seqList L, elementType x) {
 	int i = 0;
-	for (i = 0; i < L->listLen; i++) {
-		if (L->data[i] == x)
+	for (i = 0; i < L.listLen; i++) {
+		if (L.data[i] == x)
 			return i + 1;
 	}
 	return 0;//查找失败，不存在值
