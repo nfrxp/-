@@ -4,8 +4,6 @@
 using namespace std;
 
 int main() {
-	node*L;
-	initialList(L);
-	listLength(L);
+	
 	return 0;
 }

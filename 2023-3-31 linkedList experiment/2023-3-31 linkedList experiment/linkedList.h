@@ -6,7 +6,7 @@ typedef int elementType;
 typedef struct Node {
 	elementType data;
 	Node* next;
-}node;
+}node,*linkedList;
 
 
 //初始化
@@ -121,18 +121,18 @@ void listInsert2(node* L, elementType x) {
 	}
 	temp = new node;
 	temp->data = x;
-	if (u->next == NULL) {
+	if (u->next == NULL) {//未定位到比x的的元素
 		temp->next = NULL;
 		u->next = temp;
 		return ;
 	}
-	temp->next = u->next;
+	temp->next = u->next;//定位到比x大的元素
 	u->next = temp;
 }
 
 //4. 拆分单链表奇偶项（元素值的奇偶）
 void listDivide(node* L1, node* L2, node* L3) {
-	int j = 1, k = 1;
+	int j = 1, k = 1;//L2和L3的元素序号
 	node* u1 = L1->next;
 	while (u1 != NULL) {
 		if (u1->data % 2 != 0) {//奇数存L2
@@ -145,7 +145,7 @@ void listDivide(node* L1, node* L2, node* L3) {
 			k++;
 			u1 = u1->next;
 		}
-	}
+	}	
 }
 
 //5. 将递增有序单链表公共元素放入新的单链表L3中
@@ -207,22 +207,179 @@ void combineList(node*& L1, node*& L2) {
 }
 
 //81.递增有序单链表C=A∪B
-
+void mergeList(node* L1,node* L2, node* L3) {
+	int j = 1;
+	node* u1 = L1->next, * u2 = L2->next, * R = L3;
+	node* temp;
+	while(u1!=NULL && u2!=NULL) {//比较，并把小的值赋给L3
+		if (u1->data == u2->data) {
+			temp = new node;
+			temp->data = u1->data;
+			R->next = temp;
+			R = temp;
+			u1 = u1->next;
+			u2 = u2->next;
+		}
+		else if (u1->data < u2->data) {
+			temp = new node;
+			temp->data = u1->data;
+			R->next = temp;
+			R = temp;
+			u1 = u1->next;
+		}
+		else {
+			temp = new node;
+			temp->data = u2->data;
+			R->next = temp;
+			R = temp;
+			u2 = u2->next;
+		}
+	}
+	while (u1 != NULL) {
+		temp = new node;
+		temp->data = u1->data;
+		R->next = temp;
+		R = temp;
+		u1 = u1->next;
+	}
+	while (u2 != NULL) {
+		temp = new node;
+		temp->data = u2->data;
+		R->next = temp;
+		R = temp;
+		u2 = u2->next;
+	}
+	R->next = NULL;
+}
 //82.递增有序单链表C=A∩B
+void intersectList(node* L1, node* L2, node* L3) {
+	int j = 1;
+	node* u1 = L1->next, * u2 = L2->next, * R = L3;
+	node* temp;
+	while (u1 != NULL && u2 != NULL) {//比较，并把相等的值赋给L3
+		if (u1->data == u2->data) {
+			temp = new node;
+			temp->data = u1->data;
+			R->next = temp;
+			R = temp;
+			u1 = u1->next;
+			u2 = u2->next;
+		}
+		else if (u1->data < u2->data)
+			u1 = u1->next;
+		else
+			u2 = u2->next;
+	}
+	R->next = NULL;
+}
 
 //83.递增有序单链表C=A-B
+void exceptList(node* L1, node* L2, node* L3) {
+	int j = 1;
+	node* u1 = L1->next, * u2 = L2->next, * R = L3;
+	node* temp;
+	while (u1 != NULL && u2 != NULL) {//比较，并把B在A中不含有的值赋给L3
+		if (u1->data == u2->data) {
+			u1 = u1->next;
+			u2 = u2->next;
+		}
+		else if (u1->data < u2->data){
+			temp = new node;
+			temp->data = u1->data;
+			R->next = temp;
+			R = temp;
+			u1 = u1->next;
+		}
+		else
+			u2 = u2->next;
+	}
+	R->next = NULL;
+}
 
 //84.递增有序单链表A=A∪B
-
+void mergeList2(node* L1, node* L2) {
+	int j = 0;
+	node* u1 = L1, * u2 = L2;
+	node* temp;
+	while (u1->next!= NULL && u2->next != NULL) {
+		if (u1->next->data == u2->next->data) {
+			u1 = u1->next;
+			u2 = u2->next;
+		}
+		else if (u1->next->data > u2->next->data) {
+			temp = new node;
+			temp->data = u2->next->data;
+			temp->next = u1->next;
+			u1->next = temp;
+			u1 = u1->next;
+			u2 = u2->next;
+		}
+		else {
+			u1 = u1->next;
+		}
+	}
+	while (u2->next != NULL) {
+		temp = new node;
+		temp->data = u2->next->data;
+		temp->next = u1->next;
+		u1->next = temp;
+		u1 = u1->next;
+	}
+	u1->next = NULL;//尾结点next置为空
+}
 
 //85.递增有序单链表A=A∩B
+void intersectList2(node* L1, node* L2) {
+	int j = 0;
+	node* u1 = L1, * u2 = L2;
+	node* temp;
+	while (u1->next != NULL && u2->next != NULL) {
+		if (u1->next->data == u2->next->data) {
+			u1 = u1->next;
+			u2 = u2->next;
+		}
+		else if (u1->next->data < u2->next->data) {
+			temp = u1->next;
+			u1->next = temp->next;//可能为NULL
+			delete temp;
+		}
+		else {
+			u2 = u2->next;
+		}
+	}
+}
 
 
 //86.递增有序单链表A=A-B
+void exceptList2(node* L1, node* L2) {
+	int j = 0;
+	node* u1 = L1, * u2 = L2;
+	node* temp;
+	while (u1->next != NULL && u2->next != NULL) {
+		if (u1->next->data == u2->next->data) {
+			temp = u1->next;
+			u1->next = temp->next;//可能为NULL
+			delete temp;
+			u2 = u2->next;
+		}
+		else if (u1->next->data < u2->next->data) {
+			u1 = u1->next;
+		}
+		else {
+			u2 = u2->next;
+		}
+	}
+}
 
 //9. 头指针list指向单链表，查找倒数第k个位置上的结点，输出值
 bool getElement2(node* list, int k) {
-
-	cout << "值为：";
+	int i = 0;
+	int length = listLength(list);//求单链表长度
+	if (k < 0 || k>length) {
+		cout << "k非法！" << endl;
+		return 0;
+	}
+	i = length - k + 1;//算出顺序坐标
+	cout << "值为：" << getElement(list, i)->data;//输出值
 	return 1;
 }
