@@ -11,7 +11,7 @@ typedef struct Node {
 
 //初始化
 void initialList(node*& L) {
-	L = new node;//动态申请产生头结点
+	//L = new node;//动态申请产生头结点
 	L->next = NULL;//next域为空
 }
 
@@ -54,12 +54,26 @@ node* getElement(node* L, int i) {
 //按值查找元素
 node* locateElement(node* L,elementType x) {
 	node* u = L->next;
+	int i = 0;
 	while (u != NULL) {
-		if (u->data == x)
+		i++;
+		if (u->data == x){
+			cout << i << endl;
 			return u;
+		}
 		u = u->next;
 	}
 	return NULL;
+}
+
+//打印链表
+void printList(node* L) {
+	node* temp = L->next;
+	while (temp != NULL) {
+		cout << temp->data << ' ';
+		temp = temp->next;
+	}
+	cout << endl;
 }
 
 //销毁链表
@@ -375,7 +389,6 @@ bool getElement2(node* list, int k) {
 	int i = 0;
 	int length = listLength(list);//求单链表长度
 	if (k < 0 || k>length) {
-		cout << "k非法！" << endl;
 		return 0;
 	}
 	i = length - k + 1;//算出顺序坐标
