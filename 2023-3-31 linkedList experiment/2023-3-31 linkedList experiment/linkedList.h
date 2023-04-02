@@ -153,16 +153,16 @@ void sameToList(node* L1, node* L2, node* L3) {
 	int i = 1;//新单链表L3的结点序号
 	node* u1 = L1->next, * u2 = L2->next;
 	while (u1 != NULL && u2 != NULL) {
-		if (u1->data == u2->data) {
+		if (u1->data == u2->data) {//元素相同，存入L3
 			listInsert(L3, i, u1->data);
 			i++;
 			u1 = u1->next;
 			u2 = u2->next;
 		}
-		else if (u1->data < u2->data) {
+		else if (u1->data < u2->data) {//访问下一个L1
 			u1 = u1->next;
 		}
-		else
+		else//访问下一个L2
 			u2 = u2->next;
 	}
 }
@@ -172,12 +172,12 @@ void sameDelete(node* L) {
 	node* u = L->next;
 	node* temp;
 	while (u != NULL && u->next != NULL) {
-		if (u->data == u->next->data) {
+		if (u->data == u->next->data) {//重复元素，删除
 			temp = u->next;//若调用listDelete需要从头开始查找再删除，时间性能低
 			u->next = temp->next;
 			delete temp;
 		}
-		else {
+		else {//非重复元素，访问下一个元素
 			u = u->next;
 		}
 	}
@@ -192,7 +192,6 @@ void combineList(node*& L1, node*& L2) {
 			u2->next = temp->next;
 			delete temp;
 			u1 = u1->next;
-			u2 = u2->next;
 		}
 		else if (u1->next->data < u2->next->data)
 			u1 = u1->next;
@@ -278,7 +277,7 @@ void exceptList(node* L1, node* L2, node* L3) {
 	int j = 1;
 	node* u1 = L1->next, * u2 = L2->next, * R = L3;
 	node* temp;
-	while (u1 != NULL && u2 != NULL) {//比较，并把B在A中不含有的值赋给L3
+	while (u1 != NULL && u2 != NULL) {//比较，B在A中含有的值不赋给L3
 		if (u1->data == u2->data) {
 			u1 = u1->next;
 			u2 = u2->next;
