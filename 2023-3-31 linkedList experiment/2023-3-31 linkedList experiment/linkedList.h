@@ -35,8 +35,11 @@ void creatListR(node* L) {
 //求链表长度（不计入头结点）
 int listLength(node* L) {
 	int i = 0;
-	while (L->next != NULL)
+	node* temp = L;
+	while (L->next != NULL)	{
 		i++;
+		L = L->next;
+	}
 	return i;
 }
 
@@ -346,6 +349,7 @@ void mergeList2(node* L1, node* L2) {
 		temp->next = u1->next;
 		u1->next = temp;
 		u1 = u1->next;
+		u2 = u2->next;
 	}
 	u1->next = NULL;//尾结点next置为空
 }
@@ -397,10 +401,10 @@ void exceptList2(node* L1, node* L2) {
 bool getElement2(node* list, int k) {
 	int i = 0;
 	int length = listLength(list);//求单链表长度
-	if (k < 0 || k>length) {
+	if (k <= 0 || k>length) {
 		return 0;
 	}
 	i = length - k + 1;//算出顺序坐标
-	cout << "值为：" << getElement(list, i)->data;//输出值
+	cout << "值为：" << getElement(list, i)->data << endl;//输出值
 	return 1;
 }
