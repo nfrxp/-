@@ -109,6 +109,8 @@ bool listInsert(node* L, int i, elementType x) {
 
 //2. 删除结点
 bool listDelete(node* L, int i) {
+	if (i == 0)
+		return 0;//序号非法
 	node* f = L;
 	node* temp;
 	int j = 0;
@@ -130,7 +132,7 @@ bool listDelete(node* L, int i) {
 void listInsert2(node* L, elementType x) {
 	node* u = L;
 	node* temp;
-	while (u->next->data < x && u->next!= NULL) {
+	while (u->next!= NULL && u->next->data < x) {
 		u = u->next;
 	}
 	temp = new node;
@@ -305,6 +307,13 @@ void exceptList(node* L1, node* L2, node* L3) {
 		}
 		else
 			u2 = u2->next;
+	}
+	while (u1 != NULL) {
+		temp = new node;
+		temp->data = u1->data;
+		R->next = temp;
+		R = temp;
+		u1 = u1->next;
 	}
 	R->next = NULL;
 }

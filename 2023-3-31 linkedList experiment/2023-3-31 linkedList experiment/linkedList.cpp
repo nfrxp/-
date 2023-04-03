@@ -115,6 +115,10 @@ int main() {
 			break;
 		case 18:
 			systemCls();
+			break;
+		case -1:
+			cout << "退出！" << endl << endl;
+			break;
 		case 1:
 			cout << "请输入插入结点的序号：";
 			cin >> i;
@@ -195,7 +199,7 @@ int main() {
 			break;
 
 		case 7:
-			cout << "合并前：";
+			cout << "合并前：" << endl;
 			cout << "单链表L1：";
 			printList(L1);
 			cout << "单链表L2：";
