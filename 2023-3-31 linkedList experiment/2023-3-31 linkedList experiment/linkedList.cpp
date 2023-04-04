@@ -38,9 +38,7 @@ void printBoard() {
 
 }
 
-void systemCls() {
-	system("cls");
-}
+
 int main() {
 	node* L1, * L2, * L3;
 	L1 = new node;
@@ -114,7 +112,7 @@ int main() {
 
 			break;
 		case 18:
-			systemCls();
+			system("cls");
 			break;
 		case -1:
 			cout << "ÍË³ö£¡" << endl << endl;
