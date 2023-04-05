@@ -30,6 +30,11 @@ int main() {
 	int a = 0;//十进制数
 	string str;
 
+	int len = 0;
+	elementType In[]={1,2,3,4,5,6,7,8,9,10};
+	elementType Out[]= { 1,2,3,4,5,6,7,8,9,10 };
+	int i = 0, j = 0;
+
 	printBoard();
 	while (choice != -1) {
 		cout << "请输入操作序号：";
@@ -94,6 +99,12 @@ int main() {
 			}
 			else
 				cout << "匹配失败！" << endl << endl;
+			break;
+		case 3:
+			cout << "选择长度（0<=len<=10）：";
+			cin >> len;
+			legalSequence(top, In, Out, len, i, j);
+			cout << endl;
 			break;
 		default:
 			cout << "非法操作！" << endl << endl;

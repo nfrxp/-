@@ -5,6 +5,8 @@
 #define MaxLen 100
 typedef int elementType;
 using namespace std;
+int Num = 0;
+
 
 typedef struct stack {
 	elementType data[MaxLen];
@@ -93,6 +95,16 @@ void creatSeqStack(seqStack& S) {
 		cout << "栈满！" << endl << endl;
 }
 
+//19打印
+void printOut(elementType Out[], int len) {
+	int i = 0;
+	while (i < len) {
+		cout << Out[i] << ' ';
+		i++;
+	}
+	cout << endl;
+}
+
 //1 十进制转换为x进制，2 <= x <= 36
 void baseChangeStack(seqStack& S, int x, int a) {
 	int temp = 0;
@@ -148,3 +160,51 @@ bool judge(seqStack& S, string str) {
 }
 
 //3 求出所有可能的出栈序列
+void legalSequence(seqStack& S, elementType In[], elementType Out[], int len, int i, int j)
+{
+	//Num 全局变量，存储可能出栈的序列个数
+	elementType x;
+	if (stackEmpty(S) && j >= len) //递归出口，入栈序列访问完毕，获得了一个出栈序列
+	{
+		Num++; //序列数加 1
+		cout << Num << "：";
+		printOut(Out, len); //打印序列
+	}
+	else if (!stackEmpty(S) && i < len) //栈不空，入栈序列中还有数据
+	{
+		//选择出栈
+		getTop(S, x);
+		pop(S);
+		Out[j] = x;
+		j++;
+		legalSequence(S, In, Out, len, i, j);
+		j--; //递归返回，恢复到出栈前的状态
+		push(S, x);
+		//选择入栈
+		push(S, In[i]);
+		i++;
+		legalSequence(S, In, Out, len, i, j);
+		i--; //恢复到入栈前的状态
+		pop(S);
+	}
+	else if (!stackEmpty(S) && i >= len) //栈不空，入栈序列数据已经处理结束
+	{
+		//此时只能选择出栈操作
+		getTop(S, x);
+		pop(S);
+		Out[j] = x;
+		j++;
+		legalSequence(S, In, Out, len, i, j);
+		j--; //恢复到出栈前状态
+		push(S, x);
+	}
+	else if (stackEmpty(S) && i < len) //栈空，入栈序列未处理结束
+	{
+		//此时，只能选择入栈操作
+		push(S, In[i]);
+		i++;
+		legalSequence(S, In, Out, len, i, j);
+		i--; //恢复到入栈前的状态
+		pop(S);
+	}
+}

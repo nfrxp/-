@@ -4,6 +4,7 @@
 using namespace std;
 
 typedef int elementType;
+int Num = 0;
 
 typedef struct Node {
 	elementType data;
@@ -86,6 +87,16 @@ void creatLinkedStack(node* top) {
 	}
 }
 
+//18打印
+void printOut(elementType Out[],int len) {
+	int i = 0;
+	while (i < len) {
+		cout << Out[i] << ' ';
+		i++;
+	}
+	cout << endl;
+}
+
 //1. 链栈实现十进制数转换为x进制数（2<=x<=36）
 void baseChangeStack(node* top, int x, int a) {
 	elementType temp;
@@ -141,3 +152,51 @@ bool judge(node* top, string str) {
 }
 
 //3. 链栈实现输出所有可能出栈可能
+void legalSequence(node* top, elementType In[], elementType Out[], int len, int i, int j)
+{
+	//Num 全局变量，存储可能出栈的序列个数
+	elementType x;
+	if (stackEmpty(top) && j >= len) //递归出口，入栈序列访问完毕，获得了一个出栈序列
+	{
+		Num++; //序列数加 1
+		cout << Num << "：";
+		printOut(Out, len); //打印序列
+	}
+	else if (!stackEmpty(top) && i < len) //栈不空，入栈序列中还有数据
+	{
+		//选择出栈
+		getTop(top, x);
+		pop(top);
+		Out[j] = x;
+		j++;
+		legalSequence(top, In, Out, len, i, j);
+		j--; //递归返回，恢复到出栈前的状态
+		push(top, x);
+		//选择入栈
+		push(top, In[i]);
+		i++;
+		legalSequence(top, In, Out, len, i, j);
+		i--; //恢复到入栈前的状态
+		pop(top);
+	}
+	else if (!stackEmpty(top) && i >= len) //栈不空，入栈序列数据已经处理结束
+	{
+		//此时只能选择出栈操作
+		getTop(top, x);
+		pop(top);
+		Out[j] = x;
+		j++;
+		legalSequence(top, In, Out, len, i, j);
+		j--; //恢复到出栈前状态
+		push(top, x);
+	}
+	else if (stackEmpty(top) && i < len) //栈空，入栈序列未处理结束
+	{
+		//此时，只能选择入栈操作
+		push(top, In[i]);
+		i++;
+		legalSequence(top, In, Out, len, i, j);
+		i--; //恢复到入栈前的状态
+		pop(top);
+	}
+}
