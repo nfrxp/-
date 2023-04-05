@@ -27,7 +27,7 @@ int main() {
 	elementType temp;
 	int choice = 0;
 	int x = 0;//进制
-	int a = 0;//十进制数
+	int a = 0;//十进制数 
 	string str;
 
 	printBoard();
@@ -90,9 +90,10 @@ int main() {
 			cout << "十进制数a=";
 			cin >> a;
 			baseChangeStack(S, x, a);
+			cout << endl << endl;
 			break;
 		case 2:
-			cout << "请输入表达式！";
+			cout << "请输入表达式：";
 			cin >> str;
 			if (judge(S, str)) {
 				cout << "括号匹配！" << endl << endl;
