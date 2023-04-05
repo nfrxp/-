@@ -43,7 +43,7 @@ bool push(seqStack& S, elementType x) {
 	if (stackFull(S))
 		return false;
 	//S.top++;
-	S.data[++S.top] == x;
+	S.data[++S.top] = x;
 	return true;
 }
 
@@ -95,7 +95,6 @@ void creatSeqStack(seqStack& S) {
 
 //1 十进制转换为x进制，2 <= x <= 36
 void baseChangeStack(seqStack& S, int x, int a) {
-	//char alphabet[] = { 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O';
 	int temp = 0;
 	while (a > 0) {
 		push(S, a % x);
@@ -143,7 +142,7 @@ bool judge(seqStack& S, string str) {
 		}
 		else continue;
 	}
-	if (stackEmpty(S))//排除左括号比右括号多的情况
+	if (!stackEmpty(S))//排除左括号比右括号多的情况
 		return false;
 	return true;
 }
