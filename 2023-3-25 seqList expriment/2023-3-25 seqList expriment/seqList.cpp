@@ -9,7 +9,8 @@ void printBoard()
 {
 	//打印主菜单
 	cout << "************************顺序表测试程序************************" << endl;
-	cout << "*0  -退出                                                    *" << endl;
+	cout << "*-1 -退出                                                    *" << endl;
+	cout << "*0  -打印单链表操作表                                        *" << endl;
 	cout << "*111-初始化顺序表L1                                          *" << endl;
 	cout << "*112-初始化顺序表L2                                          *" << endl;
 	cout << "*113-初始化顺序表L3                                          *" << endl;
@@ -17,6 +18,7 @@ void printBoard()
 	cout << "*122-创建顺序表L2                                            *" << endl;
 	cout << "*123-创建顺序表L3                                            *" << endl;
 	cout << "*13 -打印顺序表                                              *" << endl;
+	cout << "*14 -清屏                                                    *" << endl;
 	cout << "———————————————————————————————" << endl;
 	cout << "*1  -在第i个结点位置插入值为x的结点                          *" << endl;
 	cout << "*2  -删除顺序表中第i个元素结点                               *" << endl;
@@ -48,8 +50,11 @@ int main() {
 		cout << "请输入操作序号：";
 		cin >> Choice;
 		switch (Choice) {
-		case 0://退出
+		case -1://退出
 			cout << "程序退出" << endl;
+			break;
+		case 0:
+			printBoard();
 			break;
 		case 111://初始化L1
 			//system("cls");//清除屏幕
@@ -90,6 +95,12 @@ int main() {
 			cout << "顺序表L3创建完成！" << endl << endl;
 
 			break;
+		case 13:
+			showList(L1);
+			break;
+		case 14:
+			system("cls");
+			break;
 		case 1://在i插入x
 			cout << "插入前：";
 			showList(L1);
@@ -106,9 +117,7 @@ int main() {
 				cout << "插入后：";
 				showList(L1);
 			}
-			Sleep(3000);
-			system("cls");
-			printBoard();
+			cout << endl ;
 			break;
 		case 2://删除结点i
 			cout << "删除前：";
@@ -124,9 +133,8 @@ int main() {
 				cout << "删除后：";
 				showList(L1);
 			}
-			Sleep(3000);
-			system("cls");
-			printBoard();
+			cout << endl;
+
 			break;
 		case 3://递增有序表中插入x
 			cout << "插入前：";
@@ -140,9 +148,8 @@ int main() {
 				cout << "插入后：";
 				showList(L1);
 			}
-			Sleep(3000);
-			system("cls");
-			printBoard();
+			cout << endl;
+
 			break;
 		case 4://分解奇偶项结点（值的奇偶性）
 			temp=listDivide(L1, &L2, &L3);
@@ -156,9 +163,7 @@ int main() {
 				cout << "偶表：";
 				showList(L3);
 			}
-			Sleep(3000);
-			system("cls");
-			printBoard();
+			cout << endl;
 
 			break;
 		case 5://存放两递增有序顺序表的公共元素到新顺序表L3中
@@ -169,9 +174,8 @@ int main() {
 			showList(L2);
 			cout << "存放公共元素的顺序表L3：";
 			showList(L3);
-			Sleep(3000);
-			system("cls");
-			printBoard();
+			cout << endl;
+
 			break;
 		case 6://删除递增有序顺序表中重复元素，并统计移动次数
 			cout << "删除前：";
@@ -179,9 +183,8 @@ int main() {
 			sameDelete(&L1);
 			cout << "删除后：";
 			showList(L1);
-			Sleep(3000);
-			system("cls");
-			printBoard();
+			cout << endl;
+
 			break;
 		case 71://递增有序顺序表C=A∪B
 			cout << "操作前：" << endl;
@@ -201,9 +204,8 @@ int main() {
 			showList(L2);
 			cout << "顺序表C：";
 			showList(L3);
-			Sleep(3000);
-			system("cls");
-			printBoard();
+			cout << endl;
+
 			break;
 		case 72://递增有序顺序表C = A∩B
 			cout << "操作前：" << endl;
@@ -221,9 +223,8 @@ int main() {
 			showList(L2);
 			cout << "顺序表C：";
 			showList(L3);
-			Sleep(3000);
-			system("cls");
-			printBoard();
+			cout << endl;
+
 			break;
 		case 73://递增有序顺序表C=A-B
 			cout << "操作前：" << endl;
@@ -241,9 +242,8 @@ int main() {
 			showList(L2);
 			cout << "顺序表C：";
 			showList(L3);
-			Sleep(3000);
-			system("cls");
-			printBoard();
+			cout << endl;
+
 			break;
 		case 74://递增有序顺序表A=A∪B
 			cout << "原顺序表A：";
@@ -258,9 +258,8 @@ int main() {
 			showList(L1);
 			cout << "顺序表B：";
 			showList(L2);
-			Sleep(3000);
-			system("cls");
-			printBoard();
+			cout << endl;
+
 			break;
 		case 75://递增有序顺序表A=A∩B
 			cout << "原顺序表A：";
@@ -273,9 +272,8 @@ int main() {
 			showList(L1);
 			cout << "顺序表B：";
 			showList(L2);
-			Sleep(3000);
-			system("cls");
-			printBoard();
+			cout << endl;
+
 			break;
 		case 76://递增有序顺序表A=A-B
 			cout << "原顺序表A：";
@@ -288,18 +286,16 @@ int main() {
 			showList(L1);
 			cout << "顺序表B：";
 			showList(L2);
-			Sleep(3000);
-			system("cls");
-			printBoard();
+			cout << endl;
+
 			break;
 		case 8://递增有序顺序表表示集合A、B，判定A是否B的子集
 			if (subsetList(L1, L2) == 1)
 				cout << "A是B的子集！" << endl;
 			else
 				cout << "A不是B的子集！" << endl;
-			Sleep(3000);
-			system("cls");
-			printBoard();
+			cout << endl;
+
 			break;
 		case 9://求两升序列的中位数
 			midList(L1, L2, &L3);
@@ -309,12 +305,11 @@ int main() {
 			showList(L2);
 			cout << "顺序表L3：";
 			showList(L3);
-			Sleep(3000);
-			system("cls");
-			printBoard();
+			cout << endl;
+
 			break;
 		default:
-			cout << "非法操作序号，请重新输入操作序号：";
+			cout << "非法操作序号，请重新输入操作序号："<<endl<<endl;
 			break;
 		}
 
