@@ -11,6 +11,7 @@ int main() {
 	char strLine[100][3];
 	int nArrLen = 0;
 	char fileName[] = "bt4.btr";
+	
 	ReadFileToArray(fileName, strLine, nArrLen);
 	CreateBiTreeFromFile(pBT, strLine, nArrLen, nRow);
 	return 0;
