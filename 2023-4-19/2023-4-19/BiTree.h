@@ -3,12 +3,15 @@
 typedef char elementType;
 #include<iostream>
 using namespace std;
-
+extern int n1;
+extern int n2;
 
 typedef struct blNode {
 	elementType data;
 	blNode* lChild, * rChild;//指针指向左右孩子
 }biNode,*BiTree;
+
+
 
 //读文件按先序创建二叉链表
 //【算法思想】从文件中读取数据到二维数组中，再从数组中读取数据进行二叉树的创建
@@ -30,9 +33,8 @@ bool ReadFileToArray(char fileName[], char strLine[100][3], int& nArrLen) {
 	//打开成功
 	
 	while (fgets(str, 1000, pFile) != NULL) {//跳过空行、注释行
-		//删除字符串左边空格
-		//strTemp(str);
-		if (str[0] == '\n')//空行，读下一行
+
+		if (str[0] == '\n')//跳过空行
 			continue;
 		if (str[0] == '/' && str[1] == '/')//跳过注释行
 			continue;
@@ -55,7 +57,7 @@ bool ReadFileToArray(char fileName[], char strLine[100][3], int& nArrLen) {
 			break;
 
 		}
-		else {
+		else {//可能为标识符行
 			if (strcmp(str, "BinaryTree\n") != 0)
 			{
 				printf("打开的文件格式错误！\n");
@@ -113,4 +115,65 @@ bool CreateBiTreeFromFile(biNode*& pBT, char strLine[100][3], int nLen, int nRow
 		CreateBiTreeFromFile(pBT->rChild, strLine, nLen, nRow);
 	}
 	return true;
+}
+
+//————————————————————————————————
+
+//递归先序遍历
+void preOrder(biNode* pBT) {
+	if (pBT) {
+		cout << pBT->data << ' ';
+		preOrder(pBT->lChild);
+		preOrder(pBT->rChild);
+	}
+}
+
+//递归中序遍历
+void inOrder(biNode* pBT) {
+	if (pBT) {
+		inOrder(pBT->lChild);
+		cout << pBT->data << ' ';
+		inOrder(pBT->rChild);
+	}
+}
+
+//递归后序遍历
+void postOrder(biNode* pBT) {
+	if (pBT) {
+		postOrder(pBT->lChild);
+		postOrder(pBT->rChild);
+		cout << pBT->data << ' ';
+	}
+}
+
+//递归中序遍历输出结点及其层次
+//【算法思想】基于中序遍历，使用全局变量计数，每成功访问一个结点，计数加一，访问完左右孩子结点后，计数减一
+void inOrderLevel(biNode* pBT) {
+	if (pBT) {
+		n1++;
+		inOrderLevel(pBT->lChild);
+		cout << pBT->data << '-' << n1 << ' ';
+		inOrderLevel(pBT->rChild);
+		n1--;
+	}
+}
+
+//求叶子结点数和1度的结点数
+//【算法思想】全局变量n1存储叶子结点数，全局变量n2存储1度结点数
+//递归先序遍历，若结点存在判断左右孩子是否都不存在，若是，则n1++；否则，判断是否为1度结点，利用异或判断，若是，则n2++。
+// 判断结束后先序遍历左孩子，先序遍历右孩子
+void preOrderCount01(biNode* pBT) {
+	if (pBT) {
+		if ((!pBT->lChild) && (!pBT->rChild))//叶子结点
+			n1++;
+		else if (((pBT->lChild) && (!pBT->rChild)) || ((!pBT->lChild) && (pBT->rChild)))//注意：异或，判断1度
+			n2++;
+		preOrderCount01(pBT->lChild);
+		preOrderCount01(pBT->rChild);
+	}
+}
+
+//输入x，求父节点、兄弟结点、子结点的值
+void getxRelative(biNode* pBT, char x) {
+
 }
