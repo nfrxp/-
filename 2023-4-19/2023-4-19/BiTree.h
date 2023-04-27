@@ -173,7 +173,31 @@ void preOrderCount01(biNode* pBT) {
 	}
 }
 
-//输入x，求父节点、兄弟结点、子结点的值
+//3. 输入x，求父节点、兄弟结点、子结点的值
 void getxRelative(biNode* pBT, char x) {
 
 }
+
+
+//4. 求x的层次
+void preOrderxLevel(biNode* pBT,char x,int& tag) {
+	if (pBT) {
+		n1++;
+		if (pBT->data == x) {
+			cout << x << "的层次为：" << n1 << endl << endl;
+			tag = 1;
+			return;
+		}
+		preOrderxLevel(pBT->lChild,x,tag);
+		preOrderxLevel(pBT->rChild,x,tag);
+		n1--;
+	}
+}
+
+
+//5. 将按顺序方式存储在数组中的二叉树转换为二叉链表形式
+// 顺序存储再数组中：将二叉树按层次，从上到下，从左到右，依次存储到数组中
+//【算法思想】先从文件读入到数组中，且转换为完全二叉树，再创建二叉链表
+//若子树不存在，则补上，且保证层次与树的高度一致？？？
+
+

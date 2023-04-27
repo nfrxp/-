@@ -15,6 +15,7 @@ int main() {
 	char strLine[100][3];
 	int nArrLen = 0;
 	char fileName[] = "bt151.btr";
+	int tag = 0;
 	
 	//读文件先序创建二叉链表
 	ReadFileToArray(fileName, strLine, nArrLen);
@@ -27,18 +28,25 @@ int main() {
 	postOrder(pBT);
 	cout << endl;
 
-	//中序遍历输出结点及层次
+	//1. 中序遍历输出结点及层次
 	n1 = 0;
 	inOrderLevel(pBT);
 	cout << endl<<endl;
 
-	//叶子节点数和1度结点数
+	//2. 叶子节点数和1度结点数
 	n1 = 0, n2 = 0;
 	preOrderCount01(pBT);
 	cout << "叶子节点数：" << n1 << endl;
 	cout << "1度结点数：" << n2 << endl << endl;
 
-	//输入x，求父节点、兄弟结点、子结点的值
 
+
+	//4. 输入x，求父节点、兄弟结点、子结点的值
+	n1 = 0;
+	cout << "请输入x的值：";
+	cin >> x;
+	preOrderxLevel(pBT, x, tag);
+	if (tag == 0)
+		cout << x << "不存在！" << endl << endl;
 	return 0;
 }
