@@ -14,8 +14,13 @@ int main() {
 	biNode* pBT;
 	char strLine[100][3];
 	int nArrLen = 0;
-	char fileName[] = "bt151.btr";
+	char fileName[] = "bt21.btr";
 	int tag = 0;
+
+	elementType path[100];
+	int top = 0;
+
+
 	
 	//读文件先序创建二叉链表
 	ReadFileToArray(fileName, strLine, nArrLen);
@@ -41,12 +46,23 @@ int main() {
 
 
 
-	//4. 输入x，求父节点、兄弟结点、子结点的值
-	n1 = 0;
-	cout << "请输入x的值：";
-	cin >> x;
-	preOrderxLevel(pBT, x, tag);
-	if (tag == 0)
-		cout << x << "不存在！" << endl << endl;
-	return 0;
+	////4. 输入x，求父节点、兄弟结点、子结点的值
+	//n1 = 0;
+	//cout << "请输入x的值：";
+	//cin >> x;
+	//preOrderxLevel(pBT, x, tag);
+	//if (tag == 0)
+	//	cout << x << "不存在！" << endl << endl;
+	//return 0;
+
+
+	//5
+
+
+
+    //6. 输出二叉树从每个叶子结点到根结点的路径
+
+
+	pathTree(pBT, path, top);
+
 }
